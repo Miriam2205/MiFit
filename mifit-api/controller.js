@@ -3,36 +3,38 @@ const  {Entrenamiento, Progreso, Usuario} = require ('./Schema')
 
 
 
-const getUsuarios = async (req, res, next) => {
-  try {
-    const buscar = await Usuario.find()
-    res.status(200).json({ status: 200, message: "Buscando usuario", data: buscar });
-  } catch (error) {
-    next(error);
-  }
+const registro = async (req, res, next) => {
+    try {
+        const {nombre, email, password, edad, genero, peso, altura, objetivo} = req.body
+        const usuarioExistente = await Usuario.findOne({email})
+        if(usuarioExistente) {
+            return res.status(400).json({message: 'El email ya está registrado'})
+        }
+    }
+    //encriptar contraseña
+    const salt = await bcrypt.genSalt(10)
+    const passwordEncriptado = await bcrypt.hash(password, salt)
+
+    //crear nuevo usuario
+    const nuevoUsuario = new Usuario({
+        nombre,
+        email,
+        password:passwordEncriptado,
+        edad,
+        genero,
+        peso,
+        altura,
+        objetivo
+    });
+    await nuevoUsuario.save();
+
+    //crea token
+    const token = jwt.sign(
+        {id:nuevoUsuario._id, email:nuevoUsuario.email},
+        process.env.JWT_SECRET,
+        {expiresIn: '7d'}
+    )
 }
-
-// POST (registro simple)
-const postUsuario = async (req, res, next) => {
-  try {
-    const { nombre, edad, curso, email, password } = req.body
-
-    const nuevo = new Usuario({
-      nombre,
-      edad,
-      curso,
-      email,
-      password,
-    })
-
-    await nuevo.save()
-    const buscar = await Usuario.find()
-
-    res.status(201).json({ message: "He añadido un nuevo usuario", data: buscar });
-  } catch (error) {
-    next(error)
-  }
-};
 //OBTENER ENTRENAMIENTOS
 const getEntrenamiento = async (req, res, next) => {
     try {

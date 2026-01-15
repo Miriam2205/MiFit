@@ -5,19 +5,39 @@ export const Login = ()=> {
   const formRef = useRef(null);
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = formRef.current;
 
-    // ✅ DEMO: si hay algo escrito, "loguea"
     if (!email.value || !password.value) {
       alert("Rellena email y password");
       return;
     }
 
-    // Guarda token (demo)
-    localStorage.setItem("token", "token-demo-123");
-    navigate("/", { replace: true }); // vuelve a home
+    try {
+      const response = await fetch('http://localhost:3000/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email: email.value,
+          password: password.value,
+        }),
+      });
+
+      const data = await response.json();
+
+      if (response.ok) {
+        localStorage.setItem("token", data.token);
+        navigate("/", { replace: true });
+      } else {
+        alert(data.message || 'Error en login');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error de conexión');
+    }
   };
 
   const handleLogout = () => {
