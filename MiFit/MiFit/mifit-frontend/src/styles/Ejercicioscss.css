@@ -1,0 +1,45 @@
+.Entrenamiento-container {
+  margin: 8rem;
+  width: 100%;
+   
+}
+
+.Acordeon-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    background-color: rgb(204, 204, 204);
+    padding: 15px;
+    border-radius: 1rem;
+}
+
+.Acordeon-item{
+margin-bottom: 2rem;
+
+}
+.Acordeon-icon{
+    font-size: 1.5rem;
+font-weight: bold;
+}
+.Acordeon-content{
+     width: 900px;
+}
+.Card-contenedor{
+    position: relative;
+    width: 100%;
+}
+.Imagen-ejercicio{
+    width: 400px;
+    height: auto;
+}
+.Ejercicio-item{
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 15px;
+}
+
+.Info-ejercicio{
+    flex: 1;
+}

@@ -1,0 +1,101 @@
+.Formulario {
+    margin-top: 6rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+}
+
+/* Card del formulario */
+.Formulario-card {
+    background-color: #a9b0b9;
+    padding: 2rem;
+    border-radius: 1.5rem;
+    width: 500px;
+    margin: 3rem;
+    position: relative;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.CerrarForm {
+    background: none;
+    border: none;
+    font-size: 22px;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+    color: #444;
+}
+
+.CerrarForm:hover {
+    color: red;
+}
+
+/* Campos formulario */
+.FormularioCampo {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+.Label {
+    margin: 0.5rem 0;
+}
+
+.input {
+    padding: 10px;
+    border: 2px solid #9c9898;
+    border-radius: 8px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+.input:focus {
+    border: 2px solid #007bff;
+    box-shadow: 0 0 6px rgba(0, 123, 255, 0.4);
+}
+
+/* Botones */
+.Boton {
+    margin-top: 1rem;
+    padding: 0.7rem;
+    background-color: #71bd81;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.Boton:hover {
+    background-color: #218838;
+    color: white;
+}
+
+/* Lista ejercicios */
+.ListaEjercicios {
+    margin-top: 2rem;
+    width: 330px;
+}
+
+.EjercicioItem {
+    background: #d9dde3;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+}
+
+/* mensaje vacio */
+.MensajeVacio {
+    font-style: italic;
+    text-align: center;
+    color: #555;
+}
+
+/* Mensaje verde de éxito */
+.MensajeExito {
+    margin-top: 1rem;
+    background: #71bd81;
+    padding: 0.7rem;
+    border-radius: 8px;
+    color: white;
+    text-align: center;
+}

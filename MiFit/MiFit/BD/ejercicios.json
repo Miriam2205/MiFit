@@ -1,0 +1,306 @@
+[
+    {
+        "nombre": "Sentadilla con barra",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 1
+    },
+    {
+        "nombre": "Peso muerto",
+        "series": 4,
+        "repeticiones": 10,
+        "descanso": 1
+    },
+    {
+        "nombre": "Extensión de cuadriceps",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 50
+    },
+    {
+        "nombre": "Prensa de pierna",
+        "series": 3,
+        "repeticiones": 10,
+        "descanso": 50
+    },
+    {
+        "nombre": "Curl femoral",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 50
+    },
+    {
+        "nombre": "Press banca",
+        "series": 4,
+        "repeticiones": 12,
+        "descanso": 1
+    },
+    {
+        "nombre": "Dominadas",
+        "series": 4,
+        "repeticiones": 9,
+        "descanso": 1
+    },
+    {
+        "nombre": "Fondos",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 50
+    },
+    {
+        "nombre": "Press Militar",
+        "series": 4,
+        "repeticiones": 12,
+        "descanso": 50
+    },
+    {
+        "nombre": "Elevaciones laterales",
+        "series": 4,
+        "repeticiones": 12,
+        "descanso": 50
+    },
+    {
+        "nombre": "Movilidad-Rotacion de columna",
+        "series": 1,
+        "repeticiones": 10,
+        "descanso": 10
+    },
+    {
+        "nombre": "Movilidad de hombro",
+        "series": 1,
+        "repeticiones": 10,
+        "descanso": 10
+    },
+    {
+        "nombre": "Crunch",
+        "series": 3,
+        "duracion": 20,
+        "descanso": 15
+    },
+    {
+        "nombre": "Plancha",
+        "series": 3,
+        "duracion": 20,
+        "descanso": 15
+    },
+    {
+        "nombre": "Plancha lateral",
+        "series": 3,
+        "duracion": 20,
+        "descanso": 15
+    },
+    {
+        "nombre": "Plancha con desplazamiento",
+        "series": 3,
+        "duracion": 20,
+        "descanso": 15
+    },
+    {
+        "nombre": "Abducción de cadera",
+        "series": 2,
+        "repeticiones": 10,
+        "descanso": 2
+    },
+    {
+        "nombre": "Peso muerto",
+        "series": 3,
+        "repeticiones": 10,
+        "descanso": 2
+    },
+    {
+        "nombre": "Sentadilla bulgara",
+        "series": 3,
+        "repeticiones": 8,
+        "descanso": 2
+    },
+    {
+        "nombre": "Hip trust",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Curl femoral",
+        "series": 2,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Subida a cajon",
+        "series": 3,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Rotacion escapular",
+        "series": 1,
+        "repeticiones": 20,
+        "descanso": 30
+    },
+    {
+        "nombre": "Rotacion de hombro",
+        "series": 1,
+        "repeticiones": 20,
+        "descanso": 30
+    },
+    {
+        "nombre": "Dominadas negativas",
+        "series": 3,
+        "repeticiones": 8,
+        "descanso": 2
+    },
+    {
+        "nombre": "Dominadas con goma",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Remo con barra",
+        "series": 2,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Estiramiento de espalda",
+        "series": 3,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Abducción de cadera",
+        "series": 2,
+        "repeticiones": 10,
+        "descanso": 2
+    },
+    {
+        "nombre": "Peso muerto",
+        "series": 3,
+        "repeticiones": 10,
+        "descanso": 2
+    },
+    {
+        "nombre": "Sentadilla bulgara",
+        "series": 3,
+        "repeticiones": 8,
+        "descanso": 2
+    },
+    {
+        "nombre": "Hip trust",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Curl femoral",
+        "series": 2,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Subida a cajon",
+        "series": 3,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Press banca con mancuernas",
+        "series": 3,
+        "repeticiones": 10,
+        "descanso": 2
+    },
+    {
+        "nombre": "Press Pectoral en maquina",
+        "series": 3,
+        "repeticiones": 10,
+        "descanso": 2
+    },
+    {
+        "nombre": "Press militar en maquina",
+        "series": 4,
+        "repeticiones": 8,
+        "descanso": 2
+    },
+    {
+        "nombre": "Elevaciones laterales",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Elevaciones frontales",
+        "series": 3,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Extension de triceps en maquina",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Dominadas asistidas/libres",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Remo gironda",
+        "series": 3,
+        "repeticiones": 10,
+        "descanso": 2
+    },
+    {
+        "nombre": "Jalón al pecho",
+        "series": 4,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Remo en maquina",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Curl de biceps con mancueras",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Curl martillo",
+        "series": 3,
+        "repeticiones": 15,
+        "descanso": 2
+    },
+    {
+        "nombre": "Movilidad de flexion de tobillo",
+        "series": 1,
+        "repeticiones": 15,
+        "descanso": 30
+    },
+    {
+        "nombre": "Flexiones escapulares",
+        "series": 1,
+        "repeticiones": 15,
+        "descanso": 30
+    },
+    {
+        "nombre": "Burpees",
+        "series": 3,
+        "repeticiones": 16,
+        "descanso": 30
+    },
+    {
+        "nombre": "Sentadilla con salto",
+        "series": 3,
+        "repeticiones": 12,
+        "descanso": 2
+    },
+    {
+        "nombre": "Carrera suave",
+        "duracion": 15
+    }
+]

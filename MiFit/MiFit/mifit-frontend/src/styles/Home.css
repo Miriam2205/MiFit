@@ -1,0 +1,214 @@
+
+@font-face {
+  font-family: 'Proxima Nova';
+  src: url('/fonts/proximanova_regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MiFuente';
+  src: url('/fonts/Montserrat-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+body {
+  font-family: 'MiFuente', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+.Categoria {
+    width: 90%;
+}
+
+.Bienvenida-user  {
+  position: relative;
+  width: 90%;
+  max-width: 1300px;
+  margin: 2rem auto;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-left: 5rem;
+  margin-top: 9rem;
+}
+
+
+.Bienvenido {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  display: block;
+  border-radius: 20px;
+}
+
+
+.Bienvenida-card {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 3rem;
+}
+
+
+.Bienvenida-h2, .Bienvenida-texto{
+  color: white;
+}
+
+
+
+.Btn-buscar {
+align-self: flex-end; 
+background-color: transparent;
+  
+  color: blueviolet;
+  border: 2px solid blueviolet;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  
+}
+.Btn-buscar:hover{
+  background-color: blueviolet;
+  color: white
+}
+
+
+.Card-imagen{
+  width: 350px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 20px; 
+  filter: brightness(0.5); 
+  transition: filter 0.3s ease;
+}
+.Categoria-logo{
+    margin: 2rem;
+    font-size: 3em;
+}
+
+.Categoria-titulo {
+  margin-top: 6rem;
+}
+.Categoria-nombre{
+
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.Categoria-card{
+  position: relative;
+  width: 240px;
+  height: 220px;
+  margin: 3rem;
+  border-radius: 18px;
+  transition: transform 0.2s;
+  display: inline-block;
+}
+
+.Curso-titulo{
+    font-size: 2em;
+    margin: 1rem;
+}
+.Categoria-h4{
+    margin: 2rem;
+}
+
+.Categoria-ul{
+ display: flex;
+  flex-direction: row;
+  gap: 2rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+
+}
+
+.Categoria-lista{
+    max-width: 270px;
+    height: 250px;
+    padding: 2rem;
+    
+}
+.Curso-ul{
+margin-top: 6rem;
+
+}
+
+
+
+.Card-titulo {
+   position: absolute;
+  bottom: 0;
+  left: 80%;
+  padding: 12px 0;
+  color: #fff;
+
+}
+
+.Card-contenedor{
+  width: 200px;
+}
+@media (min-width: 1900px) {
+  .Categoria-ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+  
+}
+
+@media (max-width: 768px) {
+  .Categoria-nombre {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .Categoria-ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .Curso-titulo {
+    font-size: 2em;
+  }
+
+  .Categoria-lista {
+    height: auto;
+  }
+
+  .Curso-ul {
+    margin-top: 2rem;
+  }
+}
+
+
+
+
+
+@media (max-width: 390px) {
+ 
+  .Curso-titulo, .Categoria-h4 {
+    text-align: left;
+    margin: 1rem;
+  }
+.Curso-titulo{
+  font-size: 1.6em;
+}
+  .Categoria-ul {
+    grid-template-columns: 1fr;
+  }
+
+  .Categoria-lista {
+    width: 100%;
+    height: auto;
+  }
+
+  .Curso-ul {
+    margin-top: 2rem;
+  }
+}

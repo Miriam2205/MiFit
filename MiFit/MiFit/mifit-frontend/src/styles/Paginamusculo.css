@@ -1,0 +1,35 @@
+.Entrenamiento-container{
+  display: flex;
+ flex-direction: column;
+
+}
+.Lista{
+  width: 90%;
+
+
+}
+.Imagen-ejercicio {
+  
+  border-radius: 10px;
+
+}
+
+.Item-ejercicio {
+  display: flex;
+  gap: 5rem;
+  margin: 3rem;
+  padding: 3rem;
+  background-color: rgba(255, 255, 255, 0.233);
+  border-radius: 1rem;
+
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.Item-ejercicio:hover {
+  transform: scale(1.03); /* pequeño zoom */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18); /* sombra más fuerte */
+}
+.Contenido-ejercicio{
+  margin-top: 1rem;
+}
