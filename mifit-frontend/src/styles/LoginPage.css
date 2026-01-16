@@ -1,0 +1,137 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+/* BODY */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* CONTENEDOR PRINCIPAL */
+.login-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: white !important;
+}
+
+/* FORMULARIO */
+.login-form {
+  background: #ffffff;
+  padding: 30px;
+  width: 100%;
+  max-width: 420px;
+  border-radius: 14px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+}
+
+/* TÍTULO */
+.titulo {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+/* INPUTS */
+.inputformulario {
+  margin-bottom: 12px;
+  padding: 15px 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* SELECT */
+.select {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  outline: none;
+  background-color: #fff;
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* FOCUS INPUTS Y SELECT */
+.inputformulario:focus,
+.select:focus {
+  border-color: #4facfe;
+  box-shadow: 0 0 0 2px rgba(79, 172, 254, 0.2);
+}
+
+/* BOTÓN */
+.submit-button {
+  margin-top: 10px;
+  padding: 15px;
+  border: none;
+  border-radius: 10px;
+  background-color: #4facfe;
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.submit-button:hover {
+  background-color: #3a9df8;
+  transform: translateY(-2px);
+}
+
+/* MENSAJE DE ERROR */
+.error-message {
+  background-color: #ffe5e5;
+  color: #d8000c;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  text-align: center;
+}
+
+/* TEXTO INFERIOR */
+.login-form p {
+  margin-top: 15px;
+  text-align: center;
+  font-size: 14px;
+  color: #555;
+}
+
+/* LINK */
+.login-form a {
+  color: #bb30ce;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-form a:hover {
+  text-decoration: underline;
+}
+
+/* RESPONSIVE */
+@media (max-width: 480px) {
+  .register-form {
+    padding: 20px;
+  }
+
+  .titulo {
+    font-size: 22px;
+  }
+}

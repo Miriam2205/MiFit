@@ -4,7 +4,16 @@ const mongoose = require('mongoose');
 
 //Login
 const usuarioSchema = new mongoose.Schema(
-  { nombre: String, edad: Number, curso: String, aprobado: Boolean, email: String, password: String },
+  { 
+    nombre: String, 
+    edad: Number, 
+    email: { type: String, unique: true, lowercase: true }, 
+    password: String,
+    genero: String,
+    peso: Number,
+    altura: Number,
+    objetivo: String
+  },
   { collection: "login" }
 );
 

@@ -1,11 +1,11 @@
 .Entrenamiento-container{
   display: flex;
  flex-direction: column;
+ padding-top: 150px ;
 
 }
 .Lista{
   width: 90%;
-
 
 }
 .Imagen-ejercicio {

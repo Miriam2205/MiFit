@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../styles/LoginPage.css';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -30,29 +31,27 @@ const Login = () => {
   };
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
-      <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', width: '300px' }}>
-        <h2>Iniciar Sesión</h2>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
+    <div className="login-container">
+      <form onSubmit={handleSubmit} className="login-form">
+        <h2 className="titulo">Iniciar Sesión</h2>
+        {error && <p className="error-message">{error}</p>}
         <input
+          className="inputformulario"
           type="email"
           placeholder="Email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          style={{ marginBottom: '10px', padding: '8px' }}
         />
         <input
+          className="inputformulario"
           type="password"
           placeholder="Contraseña"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
-          style={{ marginBottom: '10px', padding: '8px' }}
         />
-        <button type="submit" style={{ padding: '10px', backgroundColor: '#007bff', color: 'white', border: 'none' }}>
-          Iniciar Sesión
-        </button>
+        <button className="submit-button" type="submit">Iniciar Sesión</button>
         <p>¿No tienes cuenta? <a href="/register">Regístrate</a></p>
       </form>
     </div>

@@ -7,6 +7,9 @@
 }
 .Main-content{
   flex: 1;
+  margin-top: 150px;
+}
+.Main-content.with-sidebar {
   margin-left: 250px;
 }
 .logo {

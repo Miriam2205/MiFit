@@ -1,0 +1,92 @@
+/* Contenedor principal */
+.Consejos-container {
+  /* evita que el navbar fijo tape el contenido */
+  padding-top: 500px;
+  padding-bottom: 60px;
+
+  max-width: 900px;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  line-height: 1.6;
+}
+
+/* Título principal */
+.Consejos-container .titulo {
+  font-size: 34px;
+  font-weight: 800;
+  text-align: center;
+
+  margin-bottom: 28px;
+
+  /* “acento” visual */
+  padding-bottom: 14px;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.08);
+}
+
+/* Subtítulos */
+.Consejos-container .subtitulo {
+  font-size: 18px;
+  font-weight: 700;
+
+  margin-top: 22px;
+  margin-bottom: 10px;
+
+  /* tarjeta ligera */
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 12px 14px;
+
+  backdrop-filter: blur(6px);
+}
+
+/* Párrafos */
+.Consejos-container .texto {
+  font-size: 15.5px;
+  color: rgba(0, 0, 0, 0.78);
+
+  margin-bottom: 12px;
+
+  background: rgba(255, 255, 255, 0.16);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  border-radius: 12px;
+  padding: 14px 14px;
+}
+
+/* Detalles: resaltar texto en negrita si lo usas en algún momento */
+.Consejos-container strong {
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* Mejor lectura en pantallas grandes */
+@media (min-width: 1000px) {
+  .Consejos-container .texto {
+    font-size: 16px;
+  }
+}
+
+/* Responsive móvil */
+@media (max-width: 480px) {
+  :root {
+    --nav-height: 110px; /* si tu nav se hace más pequeño en móvil, ajusta aquí */
+  }
+
+  .Consejos-container {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .Consejos-container .titulo {
+    font-size: 24px;
+  }
+
+  .Consejos-container .subtitulo {
+    font-size: 16px;
+  }
+
+  .Consejos-container .texto {
+    font-size: 14.5px;
+  }
+}

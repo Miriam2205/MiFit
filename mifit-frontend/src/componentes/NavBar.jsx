@@ -4,6 +4,7 @@ import '../styles/reset.css'
 import '../styles/Home.css'
 import React, { useState, useEffect } from 'react'
 import { NavLink, Link } from "react-router-dom"
+import { MdAccountCircle } from 'react-icons/md'
 
 export const Menu = () => {
     const [mostrar, setMostrar] = useState(false)
@@ -53,7 +54,7 @@ export const Menu = () => {
                         <ul className="submenu">
                             <li><NavLink to="/entrenamientos">Ver todos</NavLink></li>
 
-                            {entrenamientos.map(ent => (
+                            {entrenamientos.slice(0, 5).map(ent => (
                                 <li key={ent._id}>
                                     <NavLink to={`/entrenamiento/${ent._id}`}>
                                         {ent.titulo}
@@ -68,9 +69,7 @@ export const Menu = () => {
 
                     <li>
                         <NavLink to="/usuario" className="usuario-link">
-                            <span className="material-symbols-outlined" style={{ fontSize: '30px', marginRight: '6px' }}>
-                                account_circle
-                            </span>
+                            <MdAccountCircle style={{ fontSize: '30px', marginRight: '6px' }} />
                         </NavLink>
                     </li>
                 </ul>

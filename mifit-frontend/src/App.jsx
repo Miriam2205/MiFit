@@ -26,7 +26,8 @@ import { MisEntrenamientos } from "./pages/MisEntrenamientos.jsx";
 import { Entrenamientos } from "./pages/Entrenamiento.jsx";
 
 import { Login } from "./pages/LoginPage.jsx";
-import { Register } from "./pages/RegisterPage.jsx";
+import { Register } from "./pages/Registro.jsx";
+import { Consejos } from "./pages/Consejos.jsx";
 
 // Componente para rutas privadas
 const PrivateRoute = ({ children }) => {
@@ -37,20 +38,20 @@ const PrivateRoute = ({ children }) => {
 function App() {
   const token = localStorage.getItem("token");
   const location = useLocation();
-  const esLogin = location.pathname === "/login";
+  const esAuthPage = location.pathname === "/login" || location.pathname === "/register";
 
   return (
     <div className="App">
-      {!esLogin && <Menu />}
-      {!esLogin && <Sidebar />}
+      <Menu />
+      {token && !esAuthPage && <Sidebar />}
 
-      <main className="Main-content">
+      <main className={`Main-content ${token && !esAuthPage ? 'with-sidebar' : ''}`}>
         <Routes>
           {/* LOGIN */}
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
 
-          {/* HOME: si no hay token -> login */}
+          {/* HOME*/}
           <Route
             path="/"
             element={token ? <EntrenamientoCard /> : <Navigate to="/login" replace />}
@@ -77,12 +78,16 @@ function App() {
           <Route path="/ejercicios" element={<PrivateRoute><ListaEjercicios /></PrivateRoute>} />
           <Route path="/entrenamientos" element={<PrivateRoute><Entrenamientos /></PrivateRoute>} />
 
+          {/* CONSEJOS */}
+          <Route path="/consejos" element={<Consejos/>}/>
           {/* por si te equivocas de ruta: muestra algo */}
           <Route path="*" element={<h1>404 - Ruta no encontrada</h1>} />
+
+
         </Routes>
       </main>
 
-      {!esLogin && <Footer />}
+      {!esAuthPage && <Footer />}
     </div>
   );
 }

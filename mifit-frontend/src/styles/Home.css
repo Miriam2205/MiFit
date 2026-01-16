@@ -29,7 +29,6 @@ body {
   border-radius: 20px;
   overflow: hidden;
   margin-left: 5rem;
-  margin-top: 9rem;
 }
 
 
@@ -91,9 +90,7 @@ background-color: transparent;
     font-size: 3em;
 }
 
-.Categoria-titulo {
-  margin-top: 6rem;
-}
+
 .Categoria-nombre{
 
     display: flex;
