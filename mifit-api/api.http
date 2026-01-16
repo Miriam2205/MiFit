@@ -1,0 +1,19 @@
+
+En Postman comprobamos las rutas de nuestra API.
+
+ENCONTRAR USUARIO
+  GET: http://localhost:3000/usuario
+
+ENTRENAMIENTOS
+# Obtener todos los entrenamientos
+GET: http://localhost:3000/entrenamiento
+
+# Crear entrenamiento
+http://localhost:3000/entrenamiento
+
+
+# Obtener entrenamiento por ID
+GET http://localhost:3000/entrenamiento/ID_AQUI
+
+# Eliminar entrenamiento
+DELETE http://localhost:3000/entrenamiento/ID_AQUI

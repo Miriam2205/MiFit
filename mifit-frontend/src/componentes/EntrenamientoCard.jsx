@@ -7,9 +7,8 @@ import {AnadirEntrenamiento} from  '../componentes/AnadirEntrenamiento'
 import '../styles/Estilosestructurales.css'
 import '../styles/reset.css'
 import '../styles/Home.css'
-import '../styles/Header.css'
 
-
+// Lista de entrenamientos y categorías
 const listaEntrenamiento = [
     {
         _id: 0, titulo: "Entrenamiento por enfoque estético/grupo muscular", categorias: [
@@ -60,7 +59,7 @@ export const EntrenamientoCard = () => {
                         <p className='Bienvenida-texto'>Explora y añade tus entrenamientos favoritos</p>
 
                         {!entrenamientoAnadido ? (
-                            <button onClick={() => navigate('/anadir')}>Añadir entrenamiento</button>
+                            <button className="btn-anadir" onClick={() => navigate('/anadir')}>Añadir entrenamiento</button>
 
                         ) : (
                             <p>Entrenamiento añadido: <strong>{entrenamientoAnadido}</strong></p>

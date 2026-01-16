@@ -25,6 +25,9 @@ router.route('/usuario')
 router.route('/login')
     .post(loginUsuario)
 
+router.route('/register')
+    .post(postUsuario)
+
     
 
 

@@ -1,13 +1,16 @@
 console.clear()
 console.log(`Iniciando api`)
 
+require("dotenv").config();
 const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
 const {router} = require('./router')
-const {PORT, DATABASE_URL} = require('dotenv').config().parsed
 const {Usuario} = require('./Schema')
 const bcrypt = require('bcrypt')
+
+const PORT = process.env.PORT || 3000;
+const DATABASE_URL = process.env.DATABASE_URL;
 
 const conectar = async() => {
     await mongoose.connect(DATABASE_URL)

@@ -3,15 +3,15 @@
 
 }
 .Sidebar-nav{
-  margin-top: 5rem;
   width: 250px;
   background: #19193b;
   color: white;
   padding: 1.6rem ;
   position: fixed;
-  top: 0;
+  top: var(--navbar-height);
   left: 0;
-  height: 100%;
+  height: calc(100% - var(--navbar-height));
+  overflow-y: auto;
 }
 
 .Sidebar ul {
@@ -32,4 +32,13 @@
 .Sidebar li:hover {
   background: #d6d6e0;
   border-radius: 10px;
+}
+
+@media (max-width: 900px) {
+  .Sidebar {
+    display: none;
+  }
+  .Sidebar-nav {
+    display: none;
+  }
 }

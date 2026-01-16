@@ -1,146 +1,78 @@
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
 
+const principiantes = [
+    {
+        titulo: 'Fullbody Express',
+        nivel: 'principiante',
+        material: 'sin material',
+        imagen: "/Fullbody.png",
+        duracion: 25,
+        objetivo: 'Mover todo el cuerpo sin morir en el intento'
+    },
+    {
+        titulo: 'Abdominales en casa',
+        nivel: 'principiante',
+        material: 'esterilla',
+        duracion: 20,
+        objetivo: 'Core básico para empezar'
+    },
+    {
+        titulo: 'Primera dominada',
+        nivel: 'principiante',
+        material: 'goma + barra',
+        duracion: 30,
+        objetivo: 'Progresiones sencillas para la primera repetición'
+    },
+    {
+        titulo: 'Torso Intermedio',
+        nivel: 'intermedio',
+        material: 'mancuernas',
+        duracion: 40,
+        objetivo: 'Empuje y tirón equilibrado'
+    },
+    {
+        titulo: 'Fullbody Avanzado',
+        nivel: 'avanzado',
+        material: 'barra + discos',
+        duracion: 55,
+        objetivo: 'Fuerza y potencia'
+    },
+    {
+        titulo: 'HIIT Fuego',
+        nivel: 'avanzado',
+        material: 'sin material',
+        duracion: 30,
+        objetivo: 'Cardio duro con intervalos'
+    }
+];
 
 export const EntrenamientoPrincipiantes = () => {
-
-
-    const entrenamientoPrincipiante = [
-        {
-            "titulo": "Abdominales en Casa/Gimnasio",
-            "nivel": "principiante",
-            "material": "sin material",
-            "duracion": 30,
-            "ejercicios": [
-                {
-                    "nombre": "Movilidad-Rotacion de columna",
-                    "series": 1,
-                    "repeticiones": 10,
-                    "descanso": 10
-                },
-                {
-                    "nombre": "Movilidad de hombro",
-                    "series": 1,
-                    "repeticiones": 10,
-                    "descanso": 10
-                },
-                {
-                    "nombre": "Crunch",
-                    "series": 3,
-                    "duracion": 20,
-                    "descanso": 15
-                },
-                {
-                    "nombre": "Plancha",
-                    "series": 3,
-                    "duracion": 20,
-                    "descanso": 15
-                },
-                {
-                    "nombre": "Plancha lateral",
-                    "series": 3,
-                    "duracion": 20,
-                    "descanso": 15
-                },
-                {
-                    "nombre": "Plancha con desplazamiento",
-                    "series": 3,
-                    "duracion": 20,
-                    "descanso": 15
-                }
-            ]
-        },
-        {
-            "titulo": "Consigue tu primera dominada",
-            "nivel": "principiante",
-            "material": "gomas, barra",
-            "duracion": 45,
-            "ejercicios": [
-                {
-                    "nombre": "Rotacion escapular",
-                    "series": 1,
-                    "repeticiones": 20,
-                    "descanso": 30
-                },
-                {
-                    "nombre": "Rotacion de hombro",
-                    "series": 1,
-                    "repeticiones": 20,
-                    "descanso": 30
-                },
-                {
-                    "nombre": "Dominadas negativas",
-                    "series": 3,
-                    "repeticiones": 8,
-                    "descanso": 2
-                },
-                {
-                    "nombre": "Dominadas con goma",
-                    "series": 3,
-                    "repeticiones": 12,
-                    "descanso": 2
-                },
-                {
-                    "nombre": "Remo con barra",
-                    "series": 2,
-                    "repeticiones": 15,
-                    "descanso": 2
-                },
-                {
-                    "nombre": "Estiramiento de espalda",
-                    "series": 3,
-                    "repeticiones": 15,
-                    "descanso": 2
-                }
-            ]
-        },
-        {
-            "titulo": "Entrenamiento de HIIT",
-            "nivel": "principiante",
-            "material": "sin material",
-            "duracion": 45,
-            "ejercicios": [
-                {
-                    "nombre": "Movilidad de flexion de tobillo",
-                    "series": 1,
-                    "repeticiones": 15,
-                    "descanso": 30
-                },
-                {
-                    "nombre": "Flexiones escapulares",
-                    "series": 1,
-                    "repeticiones": 15,
-                    "descanso": 30
-                },
-                {
-                    "nombre": "Burpees",
-                    "series": 3,
-                    "repeticiones": 16,
-                    "descanso": 30
-                },
-                {
-                    "nombre": "Sentadilla con salto",
-                    "series": 3,
-                    "repeticiones": 12,
-                    "descanso": 2
-                }
-            ]
-        }
-    ]
     return (
-        <div>
-            <h2>Entrenamientos para principiantes</h2>
-            <ul>
-                {EntrenamientoPrincipiante.map(ejercicio => (
-                    <li key={ejercicio.titulo}>
-                        <strong>{ejercicio.titulo}</strong>
-                        <p>Material{ejercicio.material} </p>
-                        <p>Duración: {ejercicio.duracion} min</p>
-                    </li>
-                ))}
-            </ul>
+        <div className="planes-page">
+            <h1>Entrenamientos para principiantes</h1>
+            <div className="planes-grid">
+                {principiantes.map((plan) => {
+                    if (plan.nivel !== 'principiante') return null;
+                    return (
+                        <div className="tarjeta-plan" key={plan.titulo}>
+                            {plan.imagen && (
+                                <img
+                                    src={plan.imagen}
+                                    alt={plan.titulo}
+                                    className="miniatura-plan"
+                                />
+                            )}
+                            <h3>{plan.titulo}</h3>
+                            <p className="etiqueta-nivel">Nivel: {plan.nivel}</p>
+                            <p>Material: {plan.material}</p>
+                            <p>Duración: {plan.duracion} min</p>
+                            <p className="objetivo">{plan.objetivo}</p>
+                        </div>
+                    );
+                })}
+            </div>
         </div>
-    )
+    );
+};
 
-}
 export default EntrenamientoPrincipiantes;

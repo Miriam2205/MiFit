@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+
+//Lista de ejrcicios guardados
 export const ListaEjercicios = () => {
     const [ejercicios, setEjercicios] = useState([]);
 

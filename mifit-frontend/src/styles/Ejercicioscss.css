@@ -1,17 +1,19 @@
 .Entrenamiento-container {
-  margin: 8rem;
-  width: 100%;
-   
+    margin: 4rem auto;
+    width: 100%;
+    max-width: 1100px;
+    padding: 0 1.5rem;
 }
 
 .Acordeon-header{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 1200px;
+    width: 100%;
     background-color: rgb(204, 204, 204);
     padding: 15px;
     border-radius: 1rem;
+    box-sizing: border-box;
 }
 
 .Acordeon-item{
@@ -23,21 +25,50 @@ margin-bottom: 2rem;
 font-weight: bold;
 }
 .Acordeon-content{
-     width: 900px;
+    width: 100%;
+    box-sizing: border-box;
 }
 .Card-contenedor{
     position: relative;
     width: 100%;
 }
 .Imagen-ejercicio{
-    width: 400px;
-    height: auto;
+    width: 100%;
+    max-width: 420px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    border-radius: 12px;
 }
 .Ejercicio-item{
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    padding: 15px;
+        display: flex;
+        align-items: flex-start;
+        gap: 20px;
+        padding: 15px;
+        flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+    .Entrenamiento-container {
+        margin: 2rem auto;
+        padding: 0 1rem;
+    }
+
+    .Acordeon-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .Imagen-ejercicio {
+        max-width: 100%;
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+
+    .Ejercicio-item {
+        flex-direction: column;
+        gap: 12px;
+    }
 }
 
 .Info-ejercicio{

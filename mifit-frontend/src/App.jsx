@@ -20,10 +20,15 @@ import { CalisteniaNivel } from "./pages/CalisteniaNivel.jsx";
 import { CalisteniaPrincipiante } from "./pages/CalisteniaPrincipiante.jsx";
 import { CalisteniaIntermedio } from "./pages/CalisteniaIntermedio.jsx";
 import { EntrenamientoPrincipiantes } from "./pages/Principiante.jsx";
+import { EntrenamientoIntermedio } from "./pages/Intermedio.jsx";
+import { EntrenamientoAvanzado } from "./pages/Avanzado.jsx";
 import { AnadirEntrenamiento } from "./componentes/AnadirEntrenamiento.jsx";
 import { ListaEjercicios } from "./componentes/Listaejercicios.jsx";
 import { MisEntrenamientos } from "./pages/MisEntrenamientos.jsx";
 import { Entrenamientos } from "./pages/Entrenamiento.jsx";
+import { DetalleEntrenamiento } from "./pages/DetalleEntrenamiento.jsx";
+import { Perfil } from "./pages/Perfil.jsx";
+import { Comunidad } from "./pages/Comunidad.jsx";
 
 import { Login } from "./pages/LoginPage.jsx";
 import { Register } from "./pages/Registro.jsx";
@@ -36,6 +41,7 @@ const PrivateRoute = ({ children }) => {
 };
 
 function App() {
+  console.log("API URL:", import.meta.env.VITE_API_URL);
   const token = localStorage.getItem("token");
   const location = useLocation();
   const esAuthPage = location.pathname === "/login" || location.pathname === "/register";
@@ -64,6 +70,8 @@ function App() {
           <Route path="/hiit" element={<EntrenamientoHiit />} />
           <Route path="/abdominales" element={<EntrenamientoAbdominales />} />
           <Route path="/principiante" element={<EntrenamientoPrincipiantes />} />
+          <Route path="/intermedio" element={<EntrenamientoIntermedio />} />
+          <Route path="/avanzado" element={<EntrenamientoAvanzado />} />
           <Route path="/pecho" element={<EntrenamientoPechoHombroTriceps />} />
           <Route path="/espalda" element={<EntrenamientoEspalda />} />
           <Route path="/gluteo" element={<EntrenamientoGluteo />} />
@@ -77,6 +85,9 @@ function App() {
           <Route path="/misentrenamientos" element={<PrivateRoute><MisEntrenamientos /></PrivateRoute>} />
           <Route path="/ejercicios" element={<PrivateRoute><ListaEjercicios /></PrivateRoute>} />
           <Route path="/entrenamientos" element={<PrivateRoute><Entrenamientos /></PrivateRoute>} />
+          <Route path="/entrenamiento/:id" element={<PrivateRoute><DetalleEntrenamiento /></PrivateRoute>} />
+          <Route path="/perfil" element={<PrivateRoute><Perfil /></PrivateRoute>} />
+          <Route path="/comunidad" element={<PrivateRoute><Comunidad /></PrivateRoute>} />
 
           {/* CONSEJOS */}
           <Route path="/consejos" element={<Consejos/>}/>

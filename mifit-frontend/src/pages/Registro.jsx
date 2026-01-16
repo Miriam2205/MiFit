@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Registrocss.css';
 
-
-const Register = () => {
- console.log(import.meta.env.VITE_API_URL);
+export const Register = () => {
+  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -25,7 +24,7 @@ const Register = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:3000/usuario', {
+      const response = await fetch(`${API_URL}/register`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -34,6 +33,9 @@ const Register = () => {
       });
       const data = await response.json();
       if (response.ok) {
+        localStorage.setItem("lastEmail", formData.email);
+        // Guardar datos del usuario para acceso posterior
+        localStorage.setItem("user", JSON.stringify(formData));
         navigate('/login');
       } else {
         setError(data.message);
@@ -74,4 +76,3 @@ const Register = () => {
   );
 };
 
-export { Register };

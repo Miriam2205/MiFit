@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom'
 import '../styles/Footer.css'
 
-
+//Estilos del footer
 export const Footer = () => {
     return(
         <footer className="Footer">

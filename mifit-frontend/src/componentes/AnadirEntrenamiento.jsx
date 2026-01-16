@@ -1,8 +1,11 @@
+// Componente para añadir un entrenamiento completo con varios ejercicios
 import React, { useState } from "react";
 import "../styles/AnadirEntrenamiento.css";
 
+const API_URL = import.meta.env.VITE_API_URL;
+// 1 Formulario para rellenar
 export const AnadirEntrenamiento = () => {
-    // Formulario 1 de entrenamiento
+    
     const [entrenamiento, setEntrenamiento] = useState({
         titulo: "",
         nivel: "",
@@ -10,7 +13,7 @@ export const AnadirEntrenamiento = () => {
         duracion: "",
     });
 
-    // Formulario 2 añadir ejercicios 
+    // 2 Formulario para añadir ejercicios y característias del entrenamiento
     const [ejercicio, setEjercicio] = useState({
         nombre: "",
         series: "",
@@ -62,7 +65,7 @@ export const AnadirEntrenamiento = () => {
         };
 
         try {
-            const res = await fetch("http://localhost:3000/entrenamiento", {
+            const res = await fetch(`${API_URL}/entrenamiento`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload),

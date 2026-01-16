@@ -1,13 +1,5 @@
 
 @font-face {
-  font-family: 'Proxima Nova';
-  src: url('/fonts/proximanova_regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'MiFuente';
   src: url('/fonts/Montserrat-Medium.otf') format('opentype');
   font-weight: 500;
@@ -20,6 +12,7 @@ body {
 .Categoria {
     width: 90%;
 }
+
 
 .Bienvenida-user  {
   position: relative;
@@ -57,19 +50,41 @@ body {
   color: white;
 }
 
+/* Botón añadir entrenamiento */
+.btn-anadir {
+  align-self: flex-start;
+  margin-top: 1.5rem;
+  background: linear-gradient(120deg, #7c3aed, #a855f7);
+  color: #fff;
+  border: none;
+  padding: 0.8rem 1.4rem;
+  border-radius: 999px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
+}
+.btn-anadir:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 36px rgba(124, 58, 237, 0.32);
+  filter: brightness(1.03);
+}
+.btn-anadir:active {
+  transform: translateY(0);
+  filter: brightness(0.98);
+}
 
-
+/* Botón buscar (se mantiene) */
 .Btn-buscar {
-align-self: flex-end; 
-background-color: transparent;
-  
+  align-self: flex-end; 
+  background-color: transparent;
   color: blueviolet;
   border: 2px solid blueviolet;
   padding: 0.6rem 1.2rem;
   border-radius: 8px;
   cursor: pointer;
   transition: 0.3s;
-  
 }
 .Btn-buscar:hover{
   background-color: blueviolet;
@@ -78,8 +93,9 @@ background-color: transparent;
 
 
 .Card-imagen{
-  width: 350px;
-  height: 250px;
+  width: 100%;
+  max-width: 350px;
+  aspect-ratio: 14 / 10;
   object-fit: cover;
   border-radius: 20px; 
   filter: brightness(0.5); 
@@ -101,8 +117,8 @@ background-color: transparent;
 
 .Categoria-card{
   position: relative;
-  width: 240px;
-  height: 220px;
+  width: 260px;
+  height: auto;
   margin: 3rem;
   border-radius: 18px;
   transition: transform 0.2s;
@@ -141,12 +157,13 @@ margin-top: 6rem;
 
 
 .Card-titulo {
-   position: absolute;
-  bottom: 0;
-  left: 80%;
-  padding: 12px 0;
+  position: absolute;
+  bottom: 12px;
+  left: 16px;
+  padding: 10px 12px;
   color: #fff;
-
+  font-weight: 700;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
 }
 
 .Card-contenedor{
@@ -160,6 +177,23 @@ margin-top: 6rem;
 }
 
 @media (max-width: 768px) {
+  .Card-imagen {
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 16 / 10;
+  }
+
+  .Categoria-card {
+    width: 180px;
+    margin: 1.2rem;
+  }
+
+  .Card-titulo {
+    font-size: 14px;
+    left: 12px;
+    bottom: 10px;
+  }
+
   .Categoria-nombre {
     flex-direction: column;
     align-items: flex-start;
@@ -180,6 +214,17 @@ margin-top: 6rem;
 
   .Curso-ul {
     margin-top: 2rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .Categoria-card {
+    width: 340px;
+  }
+
+  .Card-imagen {
+    max-width: 420px;
+    aspect-ratio: 16 / 10;
   }
 }
 
