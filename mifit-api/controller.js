@@ -1,5 +1,7 @@
 
 const  {Entrenamiento, Progreso, Usuario} = require ('./Schema')
+const bcrypt = require('bcrypt')
+const jwt = require('jsonwebtoken')
 
 
 
@@ -10,31 +12,36 @@ const registro = async (req, res, next) => {
         if(usuarioExistente) {
             return res.status(400).json({message: 'El email ya está registrado'})
         }
+        //encriptar contraseña
+        const salt = await bcrypt.genSalt(10)
+        const passwordEncriptado = await bcrypt.hash(password, salt)
+
+        //crear nuevo usuario
+        const nuevoUsuario = new Usuario({
+            nombre,
+            email,
+            password:passwordEncriptado,
+            edad,
+            genero,
+            peso,
+            altura,
+            objetivo
+        });
+        await nuevoUsuario.save();
+
+        //crea token
+        const token = jwt.sign(
+            {id:nuevoUsuario._id, email:nuevoUsuario.email},
+            process.env.JWT_SECRET,
+            {expiresIn: '7d'}
+        )
+
+        res.status(201).json({message: 'Usuario registrado', token})
+    } catch (error) {
+        next(error)
     }
-    //encriptar contraseña
-    const salt = await bcrypt.genSalt(10)
-    const passwordEncriptado = await bcrypt.hash(password, salt)
-
-    //crear nuevo usuario
-    const nuevoUsuario = new Usuario({
-        nombre,
-        email,
-        password:passwordEncriptado,
-        edad,
-        genero,
-        peso,
-        altura,
-        objetivo
-    });
-    await nuevoUsuario.save();
-
-    //crea token
-    const token = jwt.sign(
-        {id:nuevoUsuario._id, email:nuevoUsuario.email},
-        process.env.JWT_SECRET,
-        {expiresIn: '7d'}
-    )
 }
+
 //OBTENER ENTRENAMIENTOS
 const getEntrenamiento = async (req, res, next) => {
     try {
@@ -165,6 +172,46 @@ const postProgreso = async (req, res, next) => {
 
 
 
+//LOGIN USUARIO
+const loginUsuario = async (req, res, next) => {
+    try {
+        const {email, password} = req.body
+        const usuario = await Usuario.findOne({email})
+        if(!usuario) {
+            return res.status(400).json({message: 'Usuario no encontrado'})
+        }
+        const passwordValido = await bcrypt.compare(password, usuario.password)
+        if(!passwordValido) {
+            return res.status(400).json({message: 'Contraseña incorrecta'})
+        }
+        const token = jwt.sign(
+            {id:usuario._id, email:usuario.email},
+            process.env.JWT_SECRET,
+            {expiresIn: '7d'}
+        )
+        res.status(200).json({message: 'Login exitoso', token})
+    } catch (error) {
+        next(error)
+    }
+}
+
+//GET USUARIOS
+const getUsuarios = async (req, res, next) => {
+    try {
+        const usuarios = await Usuario.find()
+        res.status(200).json({data: usuarios})
+    } catch (error) {
+        next(error)
+    }
+}
+
+//POST USUARIO (REGISTRO)
+const postUsuario = async (req, res, next) => {
+    await registro(req, res, next)
+}
+
+
+
 
 module.exports = {
     getEntrenamiento,
@@ -176,7 +223,5 @@ module.exports = {
     anadirEjercicioEntrenamiento,
     getUsuarios,
     postUsuario,
-
-
-
+    loginUsuario
 }

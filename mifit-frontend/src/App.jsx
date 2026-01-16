@@ -1,6 +1,6 @@
 import "./App.css";
 import React, { useState } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import { Menu } from "./componentes/NavBar";
 import { Sidebar } from "./componentes/Sidebar.jsx";
@@ -26,21 +26,21 @@ import { MisEntrenamientos } from "./pages/MisEntrenamientos.jsx";
 import { Entrenamientos } from "./pages/Entrenamiento.jsx";
 
 import { Login } from "./pages/LoginPage.jsx";
+import { Register } from "./pages/RegisterPage.jsx";
 
-export const Login = ()=> {
-  const token = localStorage.getItem("token")
-  const location = useLocation()
-  const esLogin = location.pathname === "/login"
+// Componente para rutas privadas
+const PrivateRoute = ({ children }) => {
+  const token = localStorage.getItem("token");
+  return token ? children : <Navigate to="/login" replace />;
+};
 
+function App() {
+  const token = localStorage.getItem("token");
+  const location = useLocation();
+  const esLogin = location.pathname === "/login";
 
   return (
     <div className="App">
-      <Menu />
-      <Sidebar />
-
-      <main className="Main-content">
-        <Routes>
-          <div className="App">
       {!esLogin && <Menu />}
       {!esLogin && <Sidebar />}
 
@@ -48,6 +48,7 @@ export const Login = ()=> {
         <Routes>
           {/* LOGIN */}
           <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
 
           {/* HOME: si no hay token -> login */}
           <Route
@@ -55,16 +56,7 @@ export const Login = ()=> {
             element={token ? <EntrenamientoCard /> : <Navigate to="/login" replace />}
           />
 
-          {/* Si alguien escribe una ruta que no existe */}
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </main>
-
-      {!esLogin && <Footer />}
-    </div>
-
           {/* públicas */}
-          <Route path="/" element={<EntrenamientoCard />} />
           <Route path="/torso" element={<EntrenamientoTorso />} />
           <Route path="/pierna" element={<EntrenamientoPierna />} />
           <Route path="/dominada" element={<EntrenamientoDominada />} />
@@ -81,20 +73,19 @@ export const Login = ()=> {
 
           {/* privadas */}
           <Route path="/anadir" element={<PrivateRoute><AnadirEntrenamiento /></PrivateRoute>} />
-          <Route path="/misentrenamientos" element={<PrivateRoute> <MisEntrenamientos /> </PrivateRoute>} />
-          <Route path="/ejercicios" element={<PrivateRoute> <ListaEjercicios /></PrivateRoute>}
-          />
-          <Route path="/entrenamientos" element={<PrivateRoute> <Entrenamientos />
-          </PrivateRoute>
-          }
-          />
+          <Route path="/misentrenamientos" element={<PrivateRoute><MisEntrenamientos /></PrivateRoute>} />
+          <Route path="/ejercicios" element={<PrivateRoute><ListaEjercicios /></PrivateRoute>} />
+          <Route path="/entrenamientos" element={<PrivateRoute><Entrenamientos /></PrivateRoute>} />
+
           {/* por si te equivocas de ruta: muestra algo */}
           <Route path="*" element={<h1>404 - Ruta no encontrada</h1>} />
         </Routes>
       </main>
 
-      <Footer />
+      {!esLogin && <Footer />}
     </div>
   );
 }
+
+export default App;
 
