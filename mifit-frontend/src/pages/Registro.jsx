@@ -4,6 +4,7 @@ import '../styles/Registrocss.css';
 
 
 const Register = () => {
+ console.log(import.meta.env.VITE_API_URL);
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',

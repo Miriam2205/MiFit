@@ -24,12 +24,8 @@ export const MisEntrenamientos = () => {
                     {ejercicios.map((ej) => (
                         <div 
                             key={ej._id}
-                            style={{
-                                border: "1px solid #ccc",
-                                padding: "15px",
-                                borderRadius: "10px",
-                                background: "#fafafa"
-                            }}
+                            
+                            
                         >
                             <h3>{ej.nombre}</h3>
                             <p><strong>Series:</strong> {ej.series}</p>

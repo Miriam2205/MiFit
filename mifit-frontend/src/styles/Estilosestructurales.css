@@ -1,5 +1,4 @@
 
-
 .menu-list li a {
   font-family: 'Proxima Nova', sans-serif;
 }
@@ -7,9 +6,7 @@
 .logoMifit {
   width: 7rem;
 }
-.EntrenamientoPagina{
-  margin-top: 1700px;
-}
+
 /* Navbar fijo */
 .Navbar {
   position: fixed;
