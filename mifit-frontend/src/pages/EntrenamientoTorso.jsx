@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "../styles/pagina-musculo.css";
 import "../styles/reset.css"
 
+//Array de objetos con los datos de ejercicios de torso y lo recorremos con un map para mostrarlo
 export const EntrenamientoTorso = () => {
   const entrenamientoTorso = [
     { "imagen": "/pressbanca.gif", "nombre": "Press banca","descripción": "Te vas a tumbar en un banco plano con los pies firmemente apoyados en el suelo. Agarra la barra con las manos un poco más abiertos que el ancho de los hombros.Baja la barra lentamente hasta que toque el pecho, luego empuja la barra hacia arriba hasta que tus brazos estén completamente extendidos", "series": 4, "repeticiones": 12, "descanso": 1 },

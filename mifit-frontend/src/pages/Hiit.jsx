@@ -4,6 +4,7 @@ import React from "react";
 import "../styles/pagina-musculo.css";
 import "../styles/reset.css"
 
+//Array de objetos con los datos de ejercicios de hiit y lo recorremos con un map para mostrarlo
 export const EntrenamientoHiit = () => {
   const entrenamientoHit = [
     {

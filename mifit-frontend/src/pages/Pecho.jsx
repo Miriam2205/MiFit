@@ -2,6 +2,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/pagina-musculo.css";
+
+//Array de objetos con los datos de ejercicios de pecho, hombro y triceps y lo recorremos con un map para mostrarlo
 export const EntrenamientoPechoHombroTriceps = () => {
     const EntrenamientoPechoHombroTriceps = [
 

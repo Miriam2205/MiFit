@@ -1,5 +1,6 @@
 import React from 'react';
 
+//En este array tenemos todos los entrenamientos pero sólo mostraremos los de nivel principiante
 const principiantes = [
     {
         titulo: 'Fullbody Express',
@@ -51,6 +52,7 @@ export const EntrenamientoPrincipiantes = () => {
         <div className="planes-page">
             <h1>Entrenamientos para principiantes</h1>
             <div className="planes-grid">
+                {/*Recorremos el array de planes y mostramos sólo los de nivel principiante */}
                 {principiantes.map((plan) => {
                     if (plan.nivel !== 'principiante') return null;
                     return (

@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../styles/pagina-musculo.css";
+//Esta es la página de entrenamiento de pierna, esta misma estructura la he reutilizado para todos los demás entrenamientos. Es una estructura sencilla con un array de objetos que contienen datos y para mostrarlos usamos un map 
 export const EntrenamientoPierna = () => {
   const entrenamientoPierna = [
     {
@@ -25,6 +26,7 @@ export const EntrenamientoPierna = () => {
           <h3 className="Subtitulo">Nivel: Principiante-Intermedio-Avanzado</h3>
     
           <ul className="Lista">
+            {/*Importante el map para mostrar las propiedades. Para mostrar cada propiedad ponemos ejercicio.nombre*/}
             {entrenamientoPierna.map((ejercicio) => (
               <li key={ejercicio.nombre} className="Item-ejercicio">
                 <img
