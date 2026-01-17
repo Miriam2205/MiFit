@@ -219,6 +219,15 @@ const putUsuario = async (req, res, next) => {
         const { id } = req.params
         const { nombre, edad, genero, peso, altura, objetivo } = req.body
 
+        // Construir objeto con solo los campos proporcionados (sin undefined)
+        const actualizacion = {}
+        if (nombre !== undefined) actualizacion.nombre = nombre
+        if (edad !== undefined) actualizacion.edad = edad
+        if (genero !== undefined) actualizacion.genero = genero
+        if (peso !== undefined) actualizacion.peso = peso
+        if (altura !== undefined) actualizacion.altura = altura
+        if (objetivo !== undefined) actualizacion.objetivo = objetivo
+
         const usuarioActualizado = await Usuario.findByIdAndUpdate(
             id,
             actualizacion,
