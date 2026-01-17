@@ -1,5 +1,5 @@
 // componentes/NavBar.jsx
-import '../styles/Estilosestructurales.css'
+import '../styles/estilos-estructurales.css'
 import '../styles/reset.css'
 import '../styles/Home.css'
 import React, { useState, useEffect } from 'react'
@@ -7,7 +7,7 @@ import { NavLink, Link, useNavigate } from "react-router-dom"
 import { MdAccountCircle } from 'react-icons/md'
 
 // Usa la URL de la API desde las variables de entorno de Vite
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000'
+const API_URL = import.meta.env.VITE_API_URL 
 
 export const Menu = () => {
     const [mostrar, setMostrar] = useState(false)

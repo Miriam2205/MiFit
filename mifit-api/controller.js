@@ -1,5 +1,5 @@
 
-const  {Entrenamiento, Progreso, Usuario} = require ('./Schema')
+const  {Entrenamiento, Progreso, Usuario} = require ('./schema')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 

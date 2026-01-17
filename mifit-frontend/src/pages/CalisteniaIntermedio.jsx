@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-import '../styles/Ejercicioscss.css'
+import '../styles/ejercicios.css'
 import "../styles/reset.css"
 
 export const CalisteniaIntermedio = () => {

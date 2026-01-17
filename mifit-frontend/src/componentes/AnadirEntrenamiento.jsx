@@ -1,6 +1,6 @@
 // Componente para añadir un entrenamiento completo con varios ejercicios
 import React, { useState } from "react";
-import "../styles/AnadirEntrenamiento.css";
+import "../styles/anadir-entrenamiento.css";
 
 const API_URL = import.meta.env.VITE_API_URL;
 // 1 Formulario para rellenar

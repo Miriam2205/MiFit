@@ -2,11 +2,11 @@ import "./App.css";
 import React, { useState } from "react";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
-import { Menu } from "./componentes/NavBar";
+import { Menu } from "./componentes/NavBar.jsx";
 import { Sidebar } from "./componentes/Sidebar.jsx";
 import { Footer } from "./componentes/Footer.jsx";
 
-import { EntrenamientoCard } from "./componentes/EntrenamientoCard";
+import { EntrenamientoCard } from "./componentes/EntrenamientoCard.jsx";
 import { EntrenamientoTorso } from "./pages/EntrenamientoTorso.jsx";
 import { EntrenamientoPierna } from "./pages/EntrenamientoPierna.jsx";
 import { EntrenamientoDominada } from "./pages/Dominada.jsx";
@@ -24,15 +24,14 @@ import { EntrenamientoIntermedio } from "./pages/Intermedio.jsx";
 import { EntrenamientoAvanzado } from "./pages/Avanzado.jsx";
 import { AnadirEntrenamiento } from "./componentes/AnadirEntrenamiento.jsx";
 import { ListaEjercicios } from "./componentes/Listaejercicios.jsx";
-import { MisEntrenamientos } from "./pages/MisEntrenamientos.jsx";
-import { Entrenamientos } from "./pages/Entrenamiento.jsx";
 import { DetalleEntrenamiento } from "./pages/DetalleEntrenamiento.jsx";
-import { Perfil } from "./pages/Perfil.jsx";
-import { Comunidad } from "./pages/Comunidad.jsx";
+
 
 import { Login } from "./pages/LoginPage.jsx";
 import { Register } from "./pages/Registro.jsx";
 import { Consejos } from "./pages/Consejos.jsx";
+import { Perfil } from "./pages/Perfil.jsx";
+import { Comunidad } from "./pages/Comunidad.jsx";
 
 // Componente para rutas privadas
 const PrivateRoute = ({ children }) => {
@@ -63,7 +62,7 @@ function App() {
             element={token ? <EntrenamientoCard /> : <Navigate to="/login" replace />}
           />
 
-          {/* públicas */}
+          {/* RUTAS DE ENTRENAMIENTO */}
           <Route path="/torso" element={<EntrenamientoTorso />} />
           <Route path="/pierna" element={<EntrenamientoPierna />} />
           <Route path="/dominada" element={<EntrenamientoDominada />} />
@@ -80,11 +79,10 @@ function App() {
           <Route path="/calistenia/principiante" element={<CalisteniaPrincipiante />} />
           <Route path="/calistenia/intermedio" element={<CalisteniaIntermedio />} />
 
-          {/* privadas */}
+          {/* RUTAS DE FUNCIONALIDADES */}
+          
           <Route path="/anadir" element={<PrivateRoute><AnadirEntrenamiento /></PrivateRoute>} />
-          <Route path="/misentrenamientos" element={<PrivateRoute><MisEntrenamientos /></PrivateRoute>} />
           <Route path="/ejercicios" element={<PrivateRoute><ListaEjercicios /></PrivateRoute>} />
-          <Route path="/entrenamientos" element={<PrivateRoute><Entrenamientos /></PrivateRoute>} />
           <Route path="/entrenamiento/:id" element={<PrivateRoute><DetalleEntrenamiento /></PrivateRoute>} />
           <Route path="/perfil" element={<PrivateRoute><Perfil /></PrivateRoute>} />
           <Route path="/comunidad" element={<PrivateRoute><Comunidad /></PrivateRoute>} />

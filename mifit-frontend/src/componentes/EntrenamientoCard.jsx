@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import { Sidebar } from '../componentes/Sidebar'
 import { Footer } from '../componentes/Footer'
 import {AnadirEntrenamiento} from  '../componentes/AnadirEntrenamiento'
-import '../styles/Estilosestructurales.css'
+import '../styles/estilos-estructurales.css'
 import '../styles/reset.css'
 import '../styles/Home.css'
 

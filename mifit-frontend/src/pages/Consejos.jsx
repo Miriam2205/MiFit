@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import '../styles/consejos.css'
-import '../styles/Estilosestructurales.css'
+import '../styles/estilos-estructurales.css'
 export const Consejos = () =>{
     const consejos = [
 

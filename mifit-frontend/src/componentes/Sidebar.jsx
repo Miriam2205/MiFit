@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import '../styles/Sidebar.css'
+import '../styles/sidebar.css'
 import { MdHome, MdFitnessCenter, MdPerson } from 'react-icons/md';
 
 

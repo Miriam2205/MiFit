@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import App from "../App";
 import React from "react";
-import "../styles/Paginamusculo.css";
+import "../styles/pagina-musculo.css";
 import "../styles/reset.css"
 
 export const EntrenamientoHiit = () => {

@@ -6,7 +6,7 @@ const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
 const {router} = require('./router')
-const {Usuario} = require('./Schema')
+const {Usuario} = require('./schema')
 const bcrypt = require('bcrypt')
 
 const PORT = process.env.PORT || 3000;

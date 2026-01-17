@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../styles/Paginamusculo.css";
+import "../styles/pagina-musculo.css";
 export const EntrenamientoPierna = () => {
   const entrenamientoPierna = [
     {

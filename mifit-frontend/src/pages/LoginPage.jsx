@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/LoginPage.css";
+import "../styles/login-page.css";
 
 export const Login = () => {
   const API_URL = import.meta.env.VITE_API_URL || "http://localhost:3000";

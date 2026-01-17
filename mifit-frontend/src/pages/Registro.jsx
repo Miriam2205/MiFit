@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Registrocss.css';
+import '../styles/registro.css';
 
 export const Register = () => {
   const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
