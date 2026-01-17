@@ -42,6 +42,7 @@ export const Login = () => {
 
         if (data.user) {
           localStorage.setItem("user", JSON.stringify(data.user))
+          localStorage.setItem("userId", data.user._id)
         }
 
         navigate("/");

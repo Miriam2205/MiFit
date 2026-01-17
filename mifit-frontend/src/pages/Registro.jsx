@@ -4,7 +4,7 @@ import '../styles/registro.css'
 
 export const Register = () => {
   const API_URL = import.meta.env.VITE_API_URL 
-  //
+  //Guardamos los datos del formulario 
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -15,9 +15,11 @@ export const Register = () => {
     altura: '',
     objetivo: ''
   });
+  //Guardamos mensajes de error si falla 
   const [error, setError] = useState('')
   const navigate = useNavigate()
 
+  //Manejamos los cambios en los  inputs del formulario y actualizamos el estado formData
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
   };
@@ -34,9 +36,16 @@ export const Register = () => {
       const data = await response.json()
       if (response.ok) {
         localStorage.setItem("lastEmail", formData.email)
-        // Guardar datos del usuario para acceso posterior
+        // Guardar token y datos del usuario
+        localStorage.setItem("token", data.token)
         localStorage.setItem("user", JSON.stringify(formData))
-        navigate('/login')
+        
+        // El backend debería devolver el userId, si no lo tiene, guardamos un placeholder
+        if (data.user && data.user._id) {
+          localStorage.setItem("userId", data.user._id)
+        }
+        
+        navigate('/')
       } else {
         setError(data.message)
       }

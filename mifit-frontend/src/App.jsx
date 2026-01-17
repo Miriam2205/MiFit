@@ -31,6 +31,7 @@ import { Login } from "./pages/LoginPage.jsx";
 import { Register } from "./pages/Registro.jsx";
 import { Consejos } from "./pages/Consejos.jsx";
 import { Perfil } from "./pages/Perfil.jsx";
+import { EditarPerfil } from "./pages/EditarPerfil.jsx";
 import { Comunidad } from "./pages/Comunidad.jsx";
 
 // Componente para rutas privadas
@@ -85,6 +86,7 @@ function App() {
           <Route path="/ejercicios" element={<PrivateRoute><ListaEjercicios /></PrivateRoute>} />
           <Route path="/entrenamiento/:id" element={<PrivateRoute><DetalleEntrenamiento /></PrivateRoute>} />
           <Route path="/perfil" element={<PrivateRoute><Perfil /></PrivateRoute>} />
+          <Route path="/editar-perfil" element={<PrivateRoute><EditarPerfil /></PrivateRoute>} />
           <Route path="/comunidad" element={<PrivateRoute><Comunidad /></PrivateRoute>} />
 
           {/* CONSEJOS */}

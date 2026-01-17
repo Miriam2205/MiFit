@@ -189,7 +189,10 @@ const loginUsuario = async (req, res, next) => {
             process.env.JWT_SECRET,
             {expiresIn: '7d'}
         )
-        res.status(200).json({message: 'Login exitoso', token})
+        // Devolver también los datos del usuario (sin la contraseña)
+        const usuarioData = usuario.toObject()
+        delete usuarioData.password
+        res.status(200).json({message: 'Login exitoso', token, user: usuarioData})
     } catch (error) {
         next(error)
     }
@@ -210,6 +213,28 @@ const postUsuario = async (req, res, next) => {
     await registro(req, res, next)
 }
 
+//PUT USUARIO (ACTUALIZAR)
+const putUsuario = async (req, res, next) => {
+    try {
+        const { id } = req.params
+        const { nombre, edad, genero, peso, altura, objetivo } = req.body
+
+        const usuarioActualizado = await Usuario.findByIdAndUpdate(
+            id,
+            actualizacion,
+            { new: true, runValidators: true }
+        )
+
+        if (!usuarioActualizado) {
+            return res.status(404).json({ message: 'Usuario no encontrado' })
+        }
+
+        res.status(200).json({ message: 'Usuario actualizado', data: usuarioActualizado })
+    } catch (error) {
+        next(error)
+    }
+}
+
 
 
 
@@ -223,5 +248,6 @@ module.exports = {
     anadirEjercicioEntrenamiento,
     getUsuarios,
     postUsuario,
+    putUsuario,
     loginUsuario
 }

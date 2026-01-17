@@ -1,6 +1,6 @@
 const express = require ('express')
 const router = express.Router()
-const {getEntrenamiento, getEntrenamientoById, anadirEjercicioEntrenamiento, postProgreso, putEntrenamiento, deleteEntrenamiento, crearEntrenamiento, getUsuarios, postUsuario, loginUsuario} = require ('./controller')
+const {getEntrenamiento, getEntrenamientoById, anadirEjercicioEntrenamiento, postProgreso, putEntrenamiento, deleteEntrenamiento, crearEntrenamiento, getUsuarios, postUsuario, putUsuario, loginUsuario} = require ('./controller')
 const {middleware404, middleware500} = require('./middlewares')
 
 router.route('/entrenamiento')
@@ -21,6 +21,10 @@ router.route('/progreso')
 router.route('/usuario')
     .get(getUsuarios)
     .post(postUsuario)
+    .put(putUsuario)
+
+router.route('/usuario/:id')
+    .put(putUsuario)
 
 router.route('/login')
     .post(loginUsuario)
