@@ -1,8 +1,8 @@
 // Componente para añadir un entrenamiento completo con varios ejercicios
-import React, { useState } from "react";
-import "../styles/anadir-entrenamiento.css";
+import React, { useState } from "react"
+import "../styles/anadir-entrenamiento.css"
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = import.meta.env.VITE_API_URL
 // 1 Formulario para rellenar
 export const AnadirEntrenamiento = () => {
     
@@ -23,23 +23,23 @@ export const AnadirEntrenamiento = () => {
         sensaciones: "",
     });
 
-
-    const [listaEjercicios, setListaEjercicios] = useState([]);
-    const [mensaje, setMensaje] = useState(false);
+    // usamos el useState para guardar la lista de ejercicios añadidos 
+    const [listaEjercicios, setListaEjercicios] = useState([])
+    const [mensaje, setMensaje] = useState(false)
 
 
     const handleChangeEntrenamiento = (e) => {
-        setEntrenamiento({ ...entrenamiento, [e.target.name]: e.target.value });
+        setEntrenamiento({ ...entrenamiento, [e.target.name]: e.target.value })
     };
 
 
     const handleChangeEjercicio = (e) => {
-        setEjercicio({ ...ejercicio, [e.target.name]: e.target.value });
+        setEjercicio({ ...ejercicio, [e.target.name]: e.target.value })
     };
 
     // Añadir ejercicio a la lista
     const agregarEjercicio = () => {
-        setListaEjercicios([...listaEjercicios, ejercicio]);
+        setListaEjercicios([...listaEjercicios, ejercicio])
 
         // Reset del ejercicio
         setEjercicio({
@@ -54,7 +54,7 @@ export const AnadirEntrenamiento = () => {
 
     // Eliminar ejercicio
     const eliminarEjercicio = (index) => {
-        setListaEjercicios(listaEjercicios.filter((_, i) => i !== index));
+        setListaEjercicios(listaEjercicios.filter((_, i) => i !== index))
     };
 
     // Guardar entrenamiento completo
@@ -84,10 +84,10 @@ export const AnadirEntrenamiento = () => {
                 });
                 setListaEjercicios([]);
             } else {
-                alert("Error guardando entrenamiento");
+                alert("Error guardando entrenamiento")
             }
         } catch (error) {
-            alert("Error conectando con el servidor");
+            alert("Error conectando con el servidor")
         }
     };
 

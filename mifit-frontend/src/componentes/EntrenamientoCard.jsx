@@ -37,7 +37,7 @@ const listaEntrenamiento = [
     }
 ];
 
-
+//se usa useState para manejar el estado de entrenamiento
 export const EntrenamientoCard = () => {
     const [entrenamientoAnadido, setEntrenamientoAnadido] = useState(false)
     const [mostrarFormulario, setMostrarFormulario] = useState(false);
@@ -48,7 +48,7 @@ export const EntrenamientoCard = () => {
     return (
         
         <div className="EntrenamientoPagina">
-
+            {/*Esta es la parte de arriba de la home, dónde nos da la bienvenida y tenemos un botón para añadir entrebamientos  */}
 
             <div className='EntrenamientoCard'>
                 <div className="Bienvenida-user">
@@ -58,6 +58,7 @@ export const EntrenamientoCard = () => {
                         <h2 className='Bienvenida-h2'>Bienvenido/a a MiFit</h2>
                         <p className='Bienvenida-texto'>Explora y añade tus entrenamientos favoritos</p>
 
+                        
                         {!entrenamientoAnadido ? (
                             <button className="btn-anadir" onClick={() => navigate('/anadir')}>Añadir entrenamiento</button>
 
@@ -65,7 +66,7 @@ export const EntrenamientoCard = () => {
                             <p>Entrenamiento añadido: <strong>{entrenamientoAnadido}</strong></p>
                         )}
                     </div>
-
+                        {/*Con el map recorre por la lista de Entrenamiento */}
                     {listaEntrenamiento.map(lista =>
                         <Entreno key={lista._id} {...lista} navigate={navigate} />
                     )}
@@ -82,14 +83,15 @@ export const EntrenamientoCard = () => {
     )
 }
 
-
+{/*Esto es una tarjeta o card con imagen para poder clickar y que nos llevará a la ruta correspondiente*/}
 const Card = ({ titulo, imagen, ruta, navigate }) => (
-    <div className='Categoria-card' onClick={() => navigate(ruta)} style={{ cursor: 'pointer' }}>
+    <div className='Categoria-card' onClick={() => navigate(ruta)} >
         <img src={imagen} alt={titulo} className='Card-imagen' />
 
         <h3 className="Card-titulo">{titulo}</h3>
     </div>
 )
+{/*representa una seccion de entrenamientos y extrae las props titulo, categorias y navigate. Y con el map recorre el array de categoria y crea una card y le pasa los datos */}
 const Entreno = (props) => {
     const { titulo, categorias, navigate } = props
     return (
