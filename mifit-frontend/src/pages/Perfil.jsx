@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/Perfil.css';
+import '../styles/Perfil.css'
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+const API_URL = import.meta.env.VITE_API_URL 
 
 export const Perfil = () => {
-    const navigate = useNavigate();
+    const navigate = useNavigate()
     const defaultUser = {
         nombre: 'Usuario',
         email: 'correo@ejemplo.com',
@@ -14,7 +14,7 @@ export const Perfil = () => {
         altura: '',
         objetivo: 'Añade tu objetivo'
     };
-    const [user, setUser] = useState(defaultUser);
+    const [user, setUser] = useState(defaultUser)
     const [retos, setRetos] = useState([
         { id: 1, nombre: 'Hacer 100 flexiones', completado: 45, total: 100 },
         { id: 2, nombre: 'Entrenamientos semanales', completado: 3, total: 5 },
@@ -22,22 +22,22 @@ export const Perfil = () => {
     ]);
 
     useEffect(() => {
-        const userData = localStorage.getItem('user');
+        const userData = localStorage.getItem('user')
         if (userData) {
             try {
-                setUser(JSON.parse(userData));
-                return;
+                setUser(JSON.parse(userData))
+                return
             } catch (err) {
-                console.log('No se pudo leer user de localStorage', err);
+                console.log('No se pudo leer user de localStorage', err)
             }
         }
-        setUser(defaultUser);
+        setUser(defaultUser)
     }, []);
 
     const handleLogout = () => {
-        localStorage.removeItem('token');
-        localStorage.removeItem('user');
-        navigate('/login');
+        localStorage.removeItem('token')
+        localStorage.removeItem('user')
+        navigate('/login')
     };
 
     return (

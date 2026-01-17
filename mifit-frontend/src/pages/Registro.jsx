@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import '../styles/registro.css';
 
 export const Register = () => {
-  const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
+  const API_URL = import.meta.env.VITE_API_URL 
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -14,11 +14,11 @@ export const Register = () => {
     altura: '',
     objetivo: ''
   });
-  const [error, setError] = useState('');
-  const navigate = useNavigate();
+  const [error, setError] = useState('')
+  const navigate = useNavigate()
 
   const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+    setFormData({ ...formData, [e.target.name]: e.target.value })
   };
 
   const handleSubmit = async (e) => {
@@ -31,17 +31,17 @@ export const Register = () => {
         },
         body: JSON.stringify(formData),
       });
-      const data = await response.json();
+      const data = await response.json()
       if (response.ok) {
-        localStorage.setItem("lastEmail", formData.email);
+        localStorage.setItem("lastEmail", formData.email)
         // Guardar datos del usuario para acceso posterior
-        localStorage.setItem("user", JSON.stringify(formData));
-        navigate('/login');
+        localStorage.setItem("user", JSON.stringify(formData))
+        navigate('/login')
       } else {
-        setError(data.message);
+        setError(data.message)
       }
     } catch (err) {
-      setError('Error al conectar con el servidor');
+      setError('Error al conectar con el servidor')
     }
   };
 
