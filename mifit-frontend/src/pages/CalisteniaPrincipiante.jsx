@@ -3,6 +3,7 @@ import { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 import '../styles/ejercicios.css'
+//Array del entrenamiento de calistenia principiante. En este diseño de página he adoptado otro diseño con un planning de tres días a través de un acordeón para que el usuario pueda ver los ejercicios de cada día al desplegarlo
 export const CalisteniaPrincipiante = () => {
   const calisteniaPrincipiante = [
     {
@@ -68,6 +69,7 @@ export const CalisteniaPrincipiante = () => {
       ]
     }
   ]
+    //Guarda que día está abierto y el valor null significa que ninguno está abierto.Luego tenemos el toggle que si hacemos click en un día cerrado se abre y si hacemos click en el día abierto se cierra
   const [diaActivo, setDiaActivo] = useState(null);
   const toggle = (index) => {
     setDiaActivo(diaActivo === index ? null : index);
@@ -78,6 +80,7 @@ export const CalisteniaPrincipiante = () => {
 
       <div className="Acordeon-container">
 
+{/*Con el map recorre el array calistenia Principiante y si le damos a toggle nos mostrará los ejercicios de ese día. */}
         {calisteniaPrincipiante.map((dia, index) => (
 
           <div className="Acordeon-item">

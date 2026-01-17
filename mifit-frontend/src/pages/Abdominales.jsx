@@ -1,6 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import "../styles/pagina-musculo.css";
+import { NavLink } from "react-router-dom"
+import "../styles/pagina-musculo.css"
 import "../styles/reset.css"
 
 //Array del entrenamiento de abdominales

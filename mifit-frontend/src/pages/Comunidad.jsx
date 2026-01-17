@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Comunidad.css";
 
+//tenemos tres arrays de usuarios, retos y ranking para simular un portal de comunidad tipo red social. Luego haremos tres map para mostrar cada uno
 const usuarios = [
   { id: 1, usuario: "Ana G.",imagen: "/anauser.jpg" , texto: "Terminé el reto de 50 flexiones diarias.", likes: 42, comentarios: 12 },
   { id: 2, usuario: "Carlos M.", imagen: "/usuario.jpg", texto: "Rutina rápida de HIIT 20 min para mañanas.", likes: 28, comentarios: 7 },
@@ -26,6 +27,7 @@ export const Comunidad= () => {
       <p>Aquí puedes ver publicaciones, retos y ranking.</p>
 
       <h2>Publicaciones</h2>
+      {/*Con el array usuarios y el map podemos ver todos los usuarios de la comunidad*/}
       {usuarios.map((user) => (
         <div key={user.id} className="card">
           <div className="card-header">
@@ -42,6 +44,7 @@ export const Comunidad= () => {
       ))}
 
       <h2>Retos</h2>
+      {/*Con el array retos y el map podemos ver todos los retos de la comunidad*/}
       {retos.map((retos) => (
         <div key={retos.id} className="card">
           <strong>{retos.titulo}</strong>
@@ -53,6 +56,7 @@ export const Comunidad= () => {
       ))}
 
       <h2>Ranking</h2>
+      {/*Con el array ranking y el map podemos ver todos los usuarios del ranking de la comunidad*/}
       <ol>
         {ranking.map((ranking) => (
           <li key={ranking.id}>

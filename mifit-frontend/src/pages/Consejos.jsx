@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import '../styles/consejos.css'
 import '../styles/estilos-estructurales.css'
+//Una página muy sencilla con simplemnete datos y consejos para el usuario sobr ealimentacion y entrenamiento 
 export const Consejos = () =>{
     const consejos = [
 

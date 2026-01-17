@@ -1,10 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink } from "react-router-dom"
 
 import '../styles/ejercicios.css'
 import "../styles/reset.css"
 
+//Array del entrenamiento de calistenia intermedio. En este diseño de página he adoptado otro diseño con un planning de tres días a través de un acordeón para que el usuario pueda ver los ejercicios de cada día al desplegarlo
 export const CalisteniaIntermedio = () => {
  
   const entrenamientoCalistenia = [
@@ -89,9 +90,10 @@ export const CalisteniaIntermedio = () => {
     }
   ];
 
-   const [diaActivo, setDiaActivo] = useState(null);
+  //Guarda que día está abierto y el valor null significa que ninguno está abierto.Luego tenemos el toggle que si hacemos click en un día cerrado se abre y si hacemos click en el día abierto se cierra
+   const [diaActivo, setDiaActivo] = useState(null)
   const toggle = (index) => {
-    setDiaActivo(diaActivo === index ? null : index);
+    setDiaActivo(diaActivo === index ? null : index)
   }
 
   return (
@@ -99,11 +101,11 @@ export const CalisteniaIntermedio = () => {
       <h2 className="Titulo">Entrenamiento de Calistenia Intermedio-Avanzado</h2>
 
       <div className="Acordeon-container">
-
+      {/*Con el map recorre el array de entrenamientoCalistenia para mostrar el día y sus ejercicios. */}
         {entrenamientoCalistenia.map((dia, index) => (
 
           <div className="Acordeon-item">
-
+            {/*Con este toggle llama a hacerlo click  y se abre o se cierra*/}
             <div className="Acordeon-header" onClick={() => toggle(index)}>
               <h3>{dia.dia}</h3>
               <span className="Acordeon-icon">{diaActivo === index ? "-" : "+"}</span>

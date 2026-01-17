@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 //Array de planes de entrenamiento, podemos ver que tenemos de todos los niveles pero con el filter solo nos mostrará en pantalla el que le indiquemos, en este caso el avanzado.
 const planes = [
@@ -74,7 +74,7 @@ export const EntrenamientoAvanzado = () => {
 			<div className="planes-grid">
 				{planes.map((plan) => {
 					{/*Con esta línea lo que estamos diciendo es que de toda la lista nos filtre los que son de nivel avanzado*/}
-					if (plan.nivel !== 'avanzado') return null;
+					if (plan.nivel !== 'avanzado') return null
 					return (
 						<div className="tarjeta-plan" key={plan.titulo}>
 							<h3>{plan.titulo}</h3>
@@ -90,4 +90,4 @@ export const EntrenamientoAvanzado = () => {
 	);
 };
 
-export default EntrenamientoAvanzado;
+export default EntrenamientoAvanzado
