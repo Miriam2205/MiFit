@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../styles/registro.css';
+import '../styles/registro.css'
 
 export const Register = () => {
   const API_URL = import.meta.env.VITE_API_URL 
+  //
   const [formData, setFormData] = useState({
     nombre: '',
     email: '',
@@ -22,15 +23,14 @@ export const Register = () => {
   };
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    e.preventDefault()
     try {
       const response = await fetch(`${API_URL}/register`, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json',},
         body: JSON.stringify(formData),
-      });
+      })
       const data = await response.json()
       if (response.ok) {
         localStorage.setItem("lastEmail", formData.email)
