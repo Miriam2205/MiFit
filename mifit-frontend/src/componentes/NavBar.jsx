@@ -10,11 +10,14 @@ import { MdAccountCircle } from 'react-icons/md'
 const API_URL = import.meta.env.VITE_API_URL 
 
 export const Menu = () => {
+    //Estado para manejar el menu de la hamburguesa 
     const [mostrar, setMostrar] = useState(false)
+    //Usamos el estado para manejar los entrenamientos y entrenamientos seleccionados
     const [entrenamientos, setEntrenamientos] = useState([])
     const [seleccionadoId, setSeleccionadoId] = useState(null)
     const navigate = useNavigate()
 
+    //Rutas principales comunes de los entrenamientos
     const rutasRapidas = [
         { path: '/abdominales', label: 'Abdominales' },
         { path: '/pierna', label: 'Pierna' },
@@ -33,21 +36,17 @@ export const Menu = () => {
 
     const toggleMenu = () => setMostrar(prev => !prev)
 
+    //Esta función se ejecuta cuando el usuario selecciona un entrenameinto, navega a la ruta elegida y cierra el menu
     const handleSelect = (e) => {
         const value = e.target.value
         if (!value) return
 
-        if (value.startsWith('/entrenamiento/')) {
-            const id = value.split('/').pop()
-            setSeleccionadoId(id)
-        } else {
-            setSeleccionadoId(null)
-        }
-
+        setSeleccionadoId(value.startsWith('/entrenamiento/') ? value.split('/').pop() : null)
         navigate(value)
         setMostrar(false)
     }
 
+    //Esta función es para cuando el usuario quiere borrar un entrenamiento. Primero pide confirmación y luego hace una petición DELETE a la API, si no hay errores se borra de la lista y si no salta un mensaje de error de misión fallida
     const handleDelete = async () => {
         if (!seleccionadoId) return
         const confirmDelete = window.confirm('¿Borrar este entrenamiento?')
@@ -64,12 +63,12 @@ export const Menu = () => {
         }
     }
 
-    // Cargar entrenamientos desde la API
+    // Cargar entrenamientos desde la API, por eso vemos una petición de fetch a la API para obetner todos los entrenamientos. Esos datos los convierte en json y guarda los entrenamientos en el estado
     const cargarEntrenamientos = async () => {
         try {
             const res = await fetch(`${API_URL}/entrenamiento`)
             const data = await res.json()
-            // algunos endpoints pueden devolver el array directo o dentro de data
+            
             const lista = Array.isArray(data) ? data : data?.data || []
             setEntrenamientos(lista)
         } catch (error) {
@@ -88,6 +87,7 @@ export const Menu = () => {
                     <img src="/logomifit.png" alt="logoMifit" className='logoMifit' />
                 </Link>
 
+                {/*Botón que se muestra cuando la pantalla es pequeña y muestra el menú hamburguesa*/}
                 <button
                     className={`hamburguesa ${mostrar ? 'is-active' : ''}`}
                     onClick={toggleMenu}
@@ -101,17 +101,20 @@ export const Menu = () => {
 
                     <li><NavLink to="/">Inicio</NavLink></li>
 
-                    {/* Menú Entrenamientos con submenú */}
+                    {/* Menú desplegable de Entrenamientos.  */}
                     <li className="submenu-container">
                         <div className="entrenamiento-select-wrapper">
+                            {/* Cada vez que se seleccione una opción se ejecutará handleSelect e irá a la ruta elegida*/}
                             <select className="entrenamiento-select" onChange={handleSelect} defaultValue="">
                                 <option value="" disabled>Entrenamientos</option>
                                 <option value="/entrenamientos">Ver todos</option>
+                                {/* Array de rutas rapida que mostramos con un map, son las páginas comunes de los entrenamientos */}
                                 <optgroup label="Rutas rápidas">
                                     {rutasRapidas.map((ruta) => (
                                         <option key={ruta.path} value={ruta.path}>{ruta.label}</option>
                                     ))}
                                 </optgroup>
+                                {/* Aparte de las rutas rápidas tenemos acceso a los entrenamientos que nosotros mismos hemos creado previamente en añadirEntrenamiento */}
                                 <optgroup label="Mis entrenamientos">
                                     {entrenamientos.slice(0, 20).map(ent => (
                                         <option key={ent._id} value={`/entrenamiento/${ent._id}`}>
@@ -121,14 +124,8 @@ export const Menu = () => {
                                 </optgroup>
                             </select>
                             <span className="entrenamiento-chevron">▾</span>
-                            <button
-                                type="button"
-                                className="entrenamiento-delete"
-                                onClick={handleDelete}
-                                disabled={!seleccionadoId}
-                            >
-                                Borrar
-                            </button>
+                            <button type="button" className="entrenamiento-delete" onClick={handleDelete} disabled={!seleccionadoId}
+                            >Borrar</button>
                         </div>
                     </li>
 
