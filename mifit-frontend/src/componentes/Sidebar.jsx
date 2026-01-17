@@ -4,6 +4,7 @@ import '../styles/sidebar.css'
 import { MdHome, MdFitnessCenter, MdPerson } from 'react-icons/md';
 
 
+//Componente de Sidebar, como el sidebar se repite en todas las páginas para una mayor optiización lo hacemos componente.
 export const Sidebar = () => {
     return(
         <aside className="Sidebar">        

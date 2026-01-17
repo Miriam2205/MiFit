@@ -3,6 +3,7 @@ import { NavLink } from "react-router-dom";
 import "../styles/pagina-musculo.css";
 import "../styles/reset.css"
 
+//Array del entrenamiento de abdominales
 export const EntrenamientoAbdominales = () => {
   const entrenamientoAbdominales = [
     {
@@ -26,11 +27,12 @@ export const EntrenamientoAbdominales = () => {
   ]
 
   return (
+    
     <div className="Entrenamiento-container">
       <h2 className="Titulo">Entrenamiento de Abdominales</h2>
       <h3 className="Subtitulo">Nivel: Principiante</h3>
       <h3 className="Subtitulo">Material: Goma</h3>
-
+    {/*Con el array que tenemos hecho, hacemos un map para mostrar cada ejercicio, para mostrar cada propiedad de cada ejercicio es importante el ejercicio.nombre, de esta manera mostraremos el nombre de ese ejercicio*/}
       <ul className="Lista">
         {entrenamientoAbdominales.map((ejercicio) => (
           <li key={ejercicio.nombre} className="Item-ejercicio">
