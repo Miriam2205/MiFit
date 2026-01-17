@@ -4,8 +4,10 @@ import '../styles/Perfil.css'
 
 const API_URL = import.meta.env.VITE_API_URL 
 
+
 export const Perfil = () => {
     const navigate = useNavigate()
+    ///Definimos un usuario por defecto en caso de que no haya datos en el localStorage
     const defaultUser = {
         nombre: 'Usuario',
         email: 'correo@ejemplo.com',
@@ -14,6 +16,7 @@ export const Perfil = () => {
         altura: '',
         objetivo: 'Añade tu objetivo'
     };
+    //Estados para guardar datos del usuario y retos
     const [user, setUser] = useState(defaultUser)
     const [retos, setRetos] = useState([
         { id: 1, nombre: 'Hacer 100 flexiones', completado: 45, total: 100 },
@@ -21,6 +24,7 @@ export const Perfil = () => {
         { id: 3, nombre: 'Calorías quemadas', completado: 2500, total: 5000 }
     ]);
 
+    //usamos el useEffect para cargar los datos del usuario y lee los datos del user.Si existen los convierte en JSON y sino usa el usuario por defecto.
     useEffect(() => {
         const userData = localStorage.getItem('user')
         if (userData) {
@@ -34,6 +38,7 @@ export const Perfil = () => {
         setUser(defaultUser)
     }, []);
 
+    //Esta función es para cerrar sesión y borra la sesión guardada del localStorage y por últimp redirige a la página de login
     const handleLogout = () => {
         localStorage.removeItem('token')
         localStorage.removeItem('user')
@@ -50,6 +55,7 @@ export const Perfil = () => {
             <div className="perfil-info">
                 <div className="info-card">
                     <h3>Información Personal</h3>
+                    {/*Primer gran div para la información de registro que habíamos dado */}
                     <div className="info-grid">
                         <div className="info-item">
                             <span className="label">Email:</span>
@@ -79,12 +85,13 @@ export const Perfil = () => {
             <div className="retos-section">
                 <h2>Tus Retos del Mes</h2>
                 <div className="retos-grid">
+                    {/*A través del array de retos previamente hecho lo recorremos con un map y lo mostramos con un porcentaje */}
                     {retos.map(reto => (
                         <div key={reto.id} className="reto-card">
                             <h4>{reto.nombre}</h4>
                             <div className="progreso">
                                 <div className="barra">
-                                    <div className="barra-llena" ></div>
+                                    <div className="barra-llena"></div>
                                 </div>
                                 <p className="porcentaje">{Math.round((reto.completado / reto.total) * 100)}%</p>
                             </div>
