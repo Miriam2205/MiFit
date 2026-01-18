@@ -33,6 +33,7 @@ export const Login = () => {
         },
         body: JSON.stringify({ email, password }),
       });
+      //En esta parte del token me he apoyado un poco en la IA para que me ayude a hacer el login 
       //Convierte la respuesta a JSON y si el servidor responde bien guarda el token y datos del usuario en el localStorage y navega a la página principal
       const data = await response.json()
       if (response.ok) {
