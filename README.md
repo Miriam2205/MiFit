@@ -36,8 +36,18 @@ MiFit es una <strong>aplicación fitness</strong> que permite al usuario explora
 <h2>Instalación y Ejecución🚀</h2>
 
 <h3>Requisitos de instalación</h3>
-<p>Node.js y npm</p>
-<p> En una terminal procesaremos el backend y abriremos otra terminal para procesar el Frontend</p>
+Antes de comenzar, asegúrate de tener instalado:
+- Node.js (incluye npm)
+- Git (opcional, para clonar el repositorio)
+> Nota: Las carpetas `node_modules` no están incluidas en el repositorio.  
+> Las dependencias se instalarán automáticamente mediante `npm install`.
+
+
+## Instalación y ejecución del proyecto
+
+El proyecto está dividido en dos partes: **frontend** y **backend**.  
+Es necesario ejecutar cada una en una terminal distinta.
+
 <h3>Frontend</h3>
 <p>cd mifit-frontend</p>
 <p>npm install(para descargar las dependencias)</p>
