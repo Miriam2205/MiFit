@@ -27,7 +27,7 @@ MiFit es una <strong>aplicación fitness</strong> que permite al usuario explora
 
 <h2>Tecnologías utilizadas💻</h2>
 <h3>Frontend</h3>
-<p>React, Vite,CSS,React Router </p>
+<p>React, Vite,CSS, React </p>
 <h3>Backend</h3>
 <p>Nodejs, Epressjs, JSON </p>
 <h3>Base de datos</h3>
