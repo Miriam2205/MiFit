@@ -7,12 +7,14 @@ const middleware404 = (req, res, next) => {
 
 
 const middleware500 = (error, req, res, next) => {
-    let status = error.status || 500
-        let message = error.message || `Hay un error interno en la API`
-        let data = null
-    
-        res.status(500).json({status, message, data})
-    }
+    const status = error.status || 500
+    const message = error.message || `Hay un error interno en la API`
+    const data = null
+
+    console.error(`[${new Date().toISOString()}] ${req.method} ${req.originalUrl} -> ${status}: ${message}`)
+
+    res.status(status).json({ status, message, data })
+}
     
     module.exports = {
         middleware404,

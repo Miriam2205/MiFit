@@ -5,6 +5,9 @@ import '../styles/Home.css'
 import React, { useState, useEffect } from 'react'
 import { NavLink, Link, useNavigate } from "react-router-dom"
 import { MdAccountCircle } from 'react-icons/md'
+import { Toast } from './Toast'
+import { Modal } from './ConfirmModal'
+import { useToast } from '../hooks/useToast'
 
 // Usa la URL de la API desde las variables de entorno de Vite
 const API_URL = import.meta.env.VITE_API_URL 
@@ -15,6 +18,8 @@ export const Menu = () => {
     //Usamos el estado para manejar los entrenamientos y entrenamientos seleccionados
     const [entrenamientos, setEntrenamientos] = useState([])
     const [seleccionadoId, setSeleccionadoId] = useState(null)
+    const [showDeleteModal, setShowDeleteModal] = useState(false)
+    const { toast, showToast, hideToast } = useToast('info')
     const navigate = useNavigate()
 
     //Rutas principales comunes de los entrenamientos
@@ -46,20 +51,29 @@ export const Menu = () => {
         setMostrar(false)
     }
 
-    //Esta función es para cuando el usuario quiere borrar un entrenamiento. Primero pide confirmación y luego hace una petición DELETE a la API, si no hay errores se borra de la lista y si no salta un mensaje de error de misión fallida
-    const handleDelete = async () => {
-        if (!seleccionadoId) return
-        const confirmDelete = window.confirm('¿Borrar este entrenamiento?')
-        if (!confirmDelete) return
+    //Esta función abre una confirmación visual antes de borrar el entrenamiento seleccionado.
+    const handleDelete = () => {
+        if (!seleccionadoId) {
+            showToast('Selecciona un entrenamiento para borrar', 'info')
+            return
+        }
 
+        setShowDeleteModal(true)
+    }
+
+    const confirmDelete = async () => {
         try {
             const res = await fetch(`${API_URL}/entrenamiento/${seleccionadoId}`, { method: 'DELETE' })
             if (!res.ok) throw new Error('Error al borrar')
 
             setEntrenamientos(prev => prev.filter(ent => ent._id !== seleccionadoId))
             setSeleccionadoId(null)
+            showToast('Entrenamiento borrado correctamente', 'success')
         } catch (error) {
-            console.log('Error borrando entrenamiento:', error)
+            console.error('Error borrando entrenamiento:', error)
+            showToast('No se pudo borrar el entrenamiento', 'error')
+        } finally {
+            setShowDeleteModal(false)
         }
     }
 
@@ -72,7 +86,7 @@ export const Menu = () => {
             const lista = Array.isArray(data) ? data : data?.data || []
             setEntrenamientos(lista)
         } catch (error) {
-            console.log("Error cargando entrenamientos:", error)
+            console.error("Error cargando entrenamientos:", error)
         }
     }
 
@@ -139,6 +153,22 @@ export const Menu = () => {
                     </li>
                 </ul>
             </nav>
+            <Modal
+                isOpen={showDeleteModal}
+                title="Borrar entrenamiento"
+                message="¿Seguro que quieres borrar este entrenamiento? Esta acción no se puede deshacer."
+                confirmText="Sí, borrar"
+                cancelText="Cancelar"
+                onConfirm={confirmDelete}
+                onCancel={() => setShowDeleteModal(false)}
+            />
+
+            <Toast
+                isVisible={toast.visible}
+                message={toast.text}
+                type={toast.type}
+                onClose={hideToast}
+            />
         </header>
     )
 }

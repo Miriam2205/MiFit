@@ -1,5 +1,6 @@
 import "./App.css";
-import React, { useState } from "react";
+import React from "react";
+import PropTypes from "prop-types";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import { Menu } from "./componentes/NavBar.jsx";
@@ -33,25 +34,38 @@ import { Consejos } from "./pages/Consejos.jsx";
 import { Perfil } from "./pages/Perfil.jsx";
 import { EditarPerfil } from "./pages/EditarPerfil.jsx";
 import { Comunidad } from "./pages/Comunidad.jsx";
+import { useAuth } from "./context/AuthContext.jsx";
 
 // Componente para rutas privadas
 const PrivateRoute = ({ children }) => {
-  const token = localStorage.getItem("token");
-  return token ? children : <Navigate to="/login" replace />;
+  const { isAuthenticated, authReady } = useAuth();
+
+  if (!authReady) {
+    return null;
+  }
+
+  return isAuthenticated ? children : <Navigate to="/login" replace />;
+};
+
+PrivateRoute.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 function App() {
-  console.log("API URL:", import.meta.env.VITE_API_URL);
-  const token = localStorage.getItem("token");
+  const { isAuthenticated, authReady } = useAuth();
   const location = useLocation();
   const esAuthPage = location.pathname === "/login" || location.pathname === "/register";
+
+  if (!authReady) {
+    return null;
+  }
 
   return (
     <div className="App">
       <Menu />
-      {token && !esAuthPage && <Sidebar />}
+      {isAuthenticated && !esAuthPage && <Sidebar />}
 
-      <main className={`Main-content ${token && !esAuthPage ? 'with-sidebar' : ''}`}>
+      <main className={`Main-content ${isAuthenticated && !esAuthPage ? 'with-sidebar' : ''}`}>
         <Routes>
           {/* LOGIN */}
           <Route path="/login" element={<Login />} />
@@ -60,7 +74,7 @@ function App() {
           {/* HOME*/}
           <Route
             path="/"
-            element={token ? <EntrenamientoCard /> : <Navigate to="/login" replace />}
+            element={isAuthenticated ? <EntrenamientoCard /> : <Navigate to="/login" replace />}
           />
 
           {/* RUTAS DE ENTRENAMIENTO */}

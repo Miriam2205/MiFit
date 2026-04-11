@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
 import '../styles/registro.css'
 
 export const Register = () => {
@@ -17,7 +18,20 @@ export const Register = () => {
   });
   //Guardamos mensajes de error si falla 
   const [error, setError] = useState('')
+  const nombreInputRef = useRef(null)
+  const errorMessageRef = useRef(null)
   const navigate = useNavigate()
+  const { login } = useAuth()
+
+  useEffect(() => {
+    nombreInputRef.current?.focus()
+  }, [])
+
+  useEffect(() => {
+    if (error) {
+      errorMessageRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    }
+  }, [error])
 
   //Manejamos los cambios en los  inputs del formulario y actualizamos el estado formData
   const handleChange = (e) => {
@@ -35,16 +49,23 @@ export const Register = () => {
       })
       const data = await response.json()
       if (response.ok) {
-        localStorage.setItem("lastEmail", formData.email)
-        // Guardar token y datos del usuario
-        localStorage.setItem("token", data.token)
-        localStorage.setItem("user", JSON.stringify(formData))
-        
-        // El backend debería devolver el userId, si no lo tiene, guardamos un placeholder
-        if (data.user && data.user._id) {
-          localStorage.setItem("userId", data.user._id)
+        const userToStore = data.user || {
+          nombre: formData.nombre,
+          email: formData.email,
+          edad: formData.edad,
+          genero: formData.genero,
+          peso: formData.peso,
+          altura: formData.altura,
+          objetivo: formData.objetivo,
         }
-        
+
+        login({
+          token: data.token,
+          user: userToStore,
+          userId: data.user?._id,
+          email: formData.email,
+        })
+
         navigate('/')
       } else {
         setError(data.message)
@@ -58,9 +79,9 @@ export const Register = () => {
     <div className="register-container">
       <form onSubmit={handleSubmit} className="register-form">
         <h2 className= "titulo">Registrarse</h2>
-        {error && <p className="error-message">{error}</p>}
+        {error && <p ref={errorMessageRef} className="error-message">{error}</p>}
 
-        <input className="inputformulario" type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} required />
+        <input ref={nombreInputRef} className="inputformulario" type="text" name="nombre" placeholder="Nombre" value={formData.nombre} onChange={handleChange} required />
 
         <input className="inputformulario" type="email" name="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
 

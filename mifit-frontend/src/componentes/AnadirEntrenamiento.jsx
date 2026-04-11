@@ -1,5 +1,7 @@
 // Componente para añadir un entrenamiento completo con varios ejercicios
 import React, { useState } from "react"
+import { Toast } from "./Toast"
+import { useToast } from "../hooks/useToast"
 import "../styles/anadir-entrenamiento.css"
 
 const API_URL = import.meta.env.VITE_API_URL
@@ -25,8 +27,7 @@ export const AnadirEntrenamiento = () => {
 
     // usamos el useState para guardar la lista de ejercicios añadidos 
     const [listaEjercicios, setListaEjercicios] = useState([])
-    const [mensaje, setMensaje] = useState(false)
-
+    const { toast, showToast, hideToast } = useToast("success")
 
     const handleChangeEntrenamiento = (e) => {
         setEntrenamiento({ ...entrenamiento, [e.target.name]: e.target.value })
@@ -72,8 +73,7 @@ export const AnadirEntrenamiento = () => {
             });
 
             if (res.ok) {
-                setMensaje(true);
-                setTimeout(() => setMensaje(false), 2500);
+                showToast("Entrenamiento guardado correctamente ✔");
 
                 // Reset total
                 setEntrenamiento({
@@ -84,10 +84,10 @@ export const AnadirEntrenamiento = () => {
                 });
                 setListaEjercicios([]);
             } else {
-                alert("Error guardando entrenamiento")
+                showToast("Error guardando entrenamiento", "error")
             }
         } catch (error) {
-            alert("Error conectando con el servidor")
+            showToast("Error conectando con el servidor", "error")
         }
     };
 
@@ -154,11 +154,12 @@ export const AnadirEntrenamiento = () => {
                 Guardar entrenamiento completo
             </button>
 
-            {mensaje && (
-                <div className="MensajeExito">
-                    Entrenamiento guardado correctamente ✔
-                </div>
-            )}
+            <Toast
+                isVisible={toast.visible}
+                message={toast.text}
+                type={toast.type}
+                onClose={hideToast}
+            />
         </div>
     );
 };

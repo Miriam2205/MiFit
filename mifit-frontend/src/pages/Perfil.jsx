@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext.jsx';
 import '../styles/Perfil.css'
-
-const API_URL = import.meta.env.VITE_API_URL 
-
 
 export const Perfil = () => {
     const navigate = useNavigate()
+    const { user, logout } = useAuth()
     ///Definimos un usuario por defecto en caso de que no haya datos en el localStorage
     const defaultUser = {
         nombre: 'Usuario',
@@ -17,38 +16,23 @@ export const Perfil = () => {
         objetivo: 'Añade tu objetivo'
     };
     //Estados para guardar datos del usuario y retos
-    const [user, setUser] = useState(defaultUser)
-    const [retos, setRetos] = useState([
+    const currentUser = user || defaultUser
+    const [retos] = useState([
         { id: 1, nombre: 'Hacer 100 flexiones', completado: 45, total: 100 },
         { id: 2, nombre: 'Entrenamientos semanales', completado: 3, total: 5 },
         { id: 3, nombre: 'Calorías quemadas', completado: 2500, total: 5000 }
     ]);
 
-    //usamos el useEffect para cargar los datos del usuario y lee los datos del user.Si existen los convierte en JSON y sino usa el usuario por defecto.
-    useEffect(() => {
-        const userData = localStorage.getItem('user')
-        if (userData) {
-            try {
-                setUser(JSON.parse(userData))
-                return
-            } catch (err) {
-                console.log('No se pudo leer user de localStorage', err)
-            }
-        }
-        setUser(defaultUser)
-    }, []);
-
-    //Esta función es para cerrar sesión y borra la sesión guardada del localStorage y por últimp redirige a la página de login
+    //Esta función es para cerrar sesión usando el contexto global y después redirige a login
     const handleLogout = () => {
-        localStorage.removeItem('token')
-        localStorage.removeItem('user')
+        logout()
         navigate('/login')
     };
 
     return (
         <div className="perfil-container">
             <div className="perfil-header">
-                <h1>¡Hola, {user.nombre }!</h1>
+                <h1>¡Hola, {currentUser.nombre }!</h1>
                 <button className="btn-logout" onClick={handleLogout}>Cerrar sesión</button>
             </div>
 
@@ -59,23 +43,23 @@ export const Perfil = () => {
                     <div className="info-grid">
                         <div className="info-item">
                             <span className="label">Email:</span>
-                            <span className="value">{user.email}</span>
+                            <span className="value">{currentUser.email}</span>
                         </div>
                         <div className="info-item">
                             <span className="label">Edad:</span>
-                            <span className="value">{user.edad } años</span>
+                            <span className="value">{currentUser.edad } años</span>
                         </div>
                         <div className="info-item">
                             <span className="label">Peso:</span>
-                            <span className="value">{user.peso } kg</span>
+                            <span className="value">{currentUser.peso } kg</span>
                         </div>
                         <div className="info-item">
                             <span className="label">Altura:</span>
-                            <span className="value">{user.altura } cm</span>
+                            <span className="value">{currentUser.altura } cm</span>
                         </div>
                         <div className="info-item full-width">
                             <span className="label">Objetivo:</span>
-                            <span className="value">{user.objetivo }</span>
+                            <span className="value">{currentUser.objetivo }</span>
                         </div>
                     </div>
                     <button className="btn-edit" onClick={() => navigate('/editar-perfil')}> Editar</button>

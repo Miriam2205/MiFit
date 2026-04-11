@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext.jsx";
 import "../styles/login-page.css"
 
 export const Login = () => {
   const API_URL = import.meta.env.VITE_API_URL 
 
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   //Usamos estados para manejar los input de email, contraseña y error
   const [email, setEmail] = useState("")
@@ -37,14 +39,12 @@ export const Login = () => {
       //Convierte la respuesta a JSON y si el servidor responde bien guarda el token y datos del usuario en el localStorage y navega a la página principal
       const data = await response.json()
       if (response.ok) {
-        
-        localStorage.setItem("token", data.token)
-        localStorage.setItem("lastEmail", email)
-
-        if (data.user) {
-          localStorage.setItem("user", JSON.stringify(data.user))
-          localStorage.setItem("userId", data.user._id)
-        }
+        login({
+          token: data.token,
+          user: data.user || null,
+          userId: data.user?._id,
+          email,
+        })
 
         navigate("/");
       } else {

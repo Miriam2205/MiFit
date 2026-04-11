@@ -1,15 +1,16 @@
 import { useEffect, useState } from "react";
 
+const API_URL = import.meta.env.VITE_API_URL
+
 
 //Lista de ejrcicios guardados
 export const ListaEjercicios = () => {
     const [ejercicios, setEjercicios] = useState([]);
 
     useEffect(() => {
-        fetch("http://localhost:3000/entrenamiento/ejercicios")
+        fetch(`${API_URL}/entrenamiento/ejercicios`)
             .then(res => res.json())
             .then(data => {
-                console.log("GET ejercicios:", data);
                 setEjercicios(data.data);
             })
             .catch(err => console.error(err));

@@ -1,13 +1,20 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Toast } from '../componentes/Toast';
+import { useAuth } from '../context/AuthContext.jsx';
+import { useToast } from '../hooks/useToast';
 import '../styles/Perfil.css'
 
 const API_URL = import.meta.env.VITE_API_URL
 
 export const EditarPerfil = () => {
     const navigate = useNavigate()
+    const { token, userId, user: authUser, updateUser } = useAuth()
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState('')
+    const { toast, showToast, hideToast } = useToast('success')
+    const edadInputRef = useRef(null)
+    const redirectTimeoutRef = useRef(null)
     const [user, setUser] = useState({
         nombre: '',
         email: '',
@@ -17,17 +24,23 @@ export const EditarPerfil = () => {
         objetivo: ''
     })
 
-    // Cargar datos del usuario desde localStorage
+    // Cargar datos del usuario desde el contexto global
     useEffect(() => {
-        const userData = localStorage.getItem('user')
-        if (userData) {
-            try {
-                setUser(JSON.parse(userData))
-            } catch (err) {
-                console.log('Error al cargar datos del usuario', err)
+        if (authUser) {
+            setUser(prev => ({
+                ...prev,
+                ...authUser,
+            }))
+        }
+
+        edadInputRef.current?.focus()
+
+        return () => {
+            if (redirectTimeoutRef.current) {
+                window.clearTimeout(redirectTimeoutRef.current)
             }
         }
-    }, [])
+    }, [authUser])
 
     // Manejar cambios en los inputs
     const handleChange = (e) => {
@@ -45,13 +58,6 @@ export const EditarPerfil = () => {
         setError('')
 
         try {
-            const token = localStorage.getItem('token')
-            const userId = localStorage.getItem('userId')
-
-            console.log('Token:', token)
-            console.log('UserId:', userId)
-            console.log('API_URL:', API_URL)
-
             if (!token || !userId) {
                 setError('Sesión expirada. Por favor inicia sesión de nuevo.')
                 navigate('/login')
@@ -73,8 +79,6 @@ export const EditarPerfil = () => {
                 })
             })
 
-            console.log('Response status:', response.status)
-
             if (!response.ok) {
                 const data = await response.json()
                 console.error('Error response:', data)
@@ -82,13 +86,14 @@ export const EditarPerfil = () => {
             }
 
             const data = await response.json()
-            console.log('Success response:', data)
             
-            // Actualizar localStorage con los nuevos datos
-            localStorage.setItem('user', JSON.stringify(data.data))
+            // Actualizar el usuario en el contexto global
+            updateUser(data.data)
             
-            alert('Perfil actualizado correctamente')
-            navigate('/perfil')
+            showToast('Perfil actualizado correctamente', 'success')
+            redirectTimeoutRef.current = window.setTimeout(() => {
+                navigate('/perfil')
+            }, 1200)
         } catch (error) {
             setError(error.message)
             console.error('Error actualizando perfil:', error)
@@ -137,6 +142,7 @@ export const EditarPerfil = () => {
                         <div className="form-group">
                             <label htmlFor="edad">Edad:</label>
                             <input
+                                ref={edadInputRef}
                                 type="number"
                                 id="edad"
                                 name="edad"
@@ -192,6 +198,12 @@ export const EditarPerfil = () => {
                     </form>
                 </div>
             </div>
+            <Toast
+                isVisible={toast.visible}
+                message={toast.text}
+                type={toast.type}
+                onClose={hideToast}
+            />
         </div>
     )
 }

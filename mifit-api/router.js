@@ -1,12 +1,15 @@
 const express = require ('express')
 const router = express.Router()
-const {getEntrenamiento, getEntrenamientoById, anadirEjercicioEntrenamiento, postProgreso, putEntrenamiento, deleteEntrenamiento, crearEntrenamiento, getUsuarios, postUsuario, putUsuario, loginUsuario} = require ('./controller')
+const {getEntrenamiento, getEjercicios, getEntrenamientoById, anadirEjercicioEntrenamiento, postProgreso, putEntrenamiento, deleteEntrenamiento, crearEntrenamiento, getUsuarios, postUsuario, putUsuario, loginUsuario} = require ('./controller')
 const {middleware404, middleware500} = require('./middlewares')
 
 router.route('/entrenamiento')
     .get(getEntrenamiento)
     .put(putEntrenamiento)
     .post(crearEntrenamiento)
+
+router.route('/entrenamiento/ejercicios')
+    .get(getEjercicios)
 
 router.route('/entrenamiento/:_id')
     .get(getEntrenamientoById)

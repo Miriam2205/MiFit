@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Sidebar } from '../componentes/Sidebar'
@@ -91,6 +92,12 @@ const Card = ({ titulo, imagen, ruta, navigate }) => (
         <h3 className="Card-titulo">{titulo}</h3>
     </div>
 )
+Card.propTypes = {
+    titulo: PropTypes.string.isRequired,
+    imagen: PropTypes.string.isRequired,
+    ruta: PropTypes.string.isRequired,
+    navigate: PropTypes.func.isRequired
+}
 {/*representa una seccion de entrenamientos y extrae las props titulo, categorias y navigate. Y con el map recorre el array de categoria y crea una card y le pasa los datos */}
 const Entreno = (props) => {
     const { titulo, categorias, navigate } = props
@@ -108,5 +115,18 @@ const Entreno = (props) => {
             </ul>
         </section>
     )
+}
+Entreno.propTypes = {
+    titulo: PropTypes.string.isRequired,
+    categorias: PropTypes.arrayOf(
+        PropTypes.shape({
+            _id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+            area: PropTypes.string,
+            titulo: PropTypes.string.isRequired,
+            imagen: PropTypes.string.isRequired,
+            ruta: PropTypes.string.isRequired
+        })
+    ).isRequired,
+    navigate: PropTypes.func.isRequired
 }
 

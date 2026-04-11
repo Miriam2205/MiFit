@@ -52,6 +52,17 @@ const getEntrenamiento = async (req, res, next) => {
     }
 }
 
+//OBTENER TODOS LOS EJERCICIOS
+const getEjercicios = async (req, res, next) => {
+    try {
+        const entrenamientos = await Entrenamiento.find({}, { ejercicios: 1 })
+        const ejercicios = entrenamientos.flatMap(ent => ent.ejercicios || [])
+        res.status(200).json({ status: 200, data: ejercicios })
+    } catch (error) {
+        next(error)
+    }
+}
+
 //OBTENER ENTRENAMIENTO POR ID
 const getEntrenamientoById = async (req, res, next) => {
     try {
@@ -93,9 +104,6 @@ const crearEntrenamiento = async (req, res, next) => {
 const anadirEjercicioEntrenamiento = async (req, res) => {
     try {
         const { id } = req.params;
-
-        console.log("BODY RECIBIDO:", req.body); // DEBUG
-
         const ejercicio = req.body;
 
         const entrenamiento = await Entrenamiento.findByIdAndUpdate(
@@ -133,7 +141,12 @@ const putEntrenamiento = async (req, res, next) => {
 const deleteEntrenamiento = async (req, res, next) => {
     try {
         const { _id } = req.params;
-        const eliminar = await Entrenamiento.findByIdAndDelete(_id);
+        const eliminar = await Entrenamiento.findOneAndDelete({ _id });
+
+        if (!eliminar) {
+            return res.status(404).json({ status: 404, message: 'Entrenamiento no encontrado', data: null });
+        }
+
         const buscar = await Entrenamiento.find();
         res.status(200).json({ status: 200, message: `Haciendo delete`, data: buscar });
     } catch (error) {
@@ -249,6 +262,7 @@ const putUsuario = async (req, res, next) => {
 
 module.exports = {
     getEntrenamiento,
+    getEjercicios,
     getEntrenamientoById,
     putEntrenamiento,
     deleteEntrenamiento,
