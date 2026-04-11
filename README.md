@@ -1,16 +1,62 @@
-# MiFit
-MiFit es una aplicación web fitness que permite al usuario explorar distintos tipos de entrenamiento por categoría y niveles. También el usuario podrá acceder a consejos y navegar por diferentes secciones de la aplicación.
+<h2>MiFit</h2> 
+MiFit es una <strong>aplicación fitness</strong> que permite al usuario explorar distintos tipos de entrenamiento por categoría y niveles. También el usuario podrá crear su propio registro de entrenamiento y navegar por consejos y acceso a una comunidad activa
 
-# División del proyecto
-El proyecto está dividido de dos grandes secciones: 
--mifit-api(el backend): esta es la parte del back desarrollada con Node JS y Express. Al subir el proyecto borramos la carpeta de node modelus por su peso, pero para iniciar el proyecto hay que instalarlo.
--mifit-fronted(para el front): esta es la parte del front desarrollada con React y Vite.
+<h2>Objetivo del proyecto🎯</h2>
+<p>MiFit es una API que ayuda al usuario que necesita un apoyo de <strong>rutinas de entrenamiento</strong>, a la vez que puede <strong>registrar</strong> sus propios ejercicios para llevar su <strong>progreso</strong></p>
 
-# Iniciar el backend y frontend
-Para  ejecutar el backend primero pondremos: 
--cd mifit-api
-npm run dev
+<h2>Características</h2>
 
-Para ejecutar el frontend, abriremos otra terminal y pondremos: 
--cd mifit-frontend
-npm run dev
+<h3>Entrenamientos🏋️‍♀️</h3>
+<p>-Programas de calistenia</p>
+<p>-Entrenamientos Full Body e HIIT</p>
+<p>-Rutinas por grupo musculares</p>
+
+<h3>Gestión de Entrenamientos📈</h3>
+<p>-Añadir nuevos entrenamientos personalizados</p>
+<p>-Ver detalles completos de cada entrenamiento</p>
+<p>-Seguimiento de ejercicios realizados</p>
+
+<h3>Comunidad🤝</h3>
+<p>-Compartir logros y experiencias</p>
+<p>-Consejos de entrenamieto</p>
+<p>-Interacción entre usuarios</p>
+
+<h3>Perfil de Usuario🙋‍♀️</h3>
+<p>-Editar información personal</p>
+<p>-Ver etádisticas de entrenamiento </p>
+
+<h2>Tecnologías utilizadas💻</h2>
+<h3>Frontend</h3>
+<p>React, Vite,CSS, React </p>
+<h3>Backend</h3>
+<p>Nodejs, Epressjs, JSON </p>
+<h3>Base de datos</h3>
+<p>MongoDB</p>
+
+<h2>Instalación y Ejecución🚀</h2>
+
+<h3>Requisitos de instalación</h3>
+<p>Antes de comenzar, asegúrate de tener instalado:</p>
+- Node.js (incluye npm)
+- Git (opcional, para clonar el repositorio)
+
+> Nota: Las carpetas `node_modules` no están incluidas en el repositorio.  
+> Las dependencias se instalarán automáticamente mediante `npm install`.
+
+
+## Instalación y ejecución del proyecto
+
+El proyecto está dividido en dos partes: **frontend** y **backend**.  
+Es necesario ejecutar cada una en una terminal distinta.
+
+<h3>Frontend</h3>
+<p>cd mifit-frontend</p>
+<p>npm install(para descargar las dependencias)</p>
+<p>npm run dev</p>
+
+<h3>Backend</h3>
+<p>cd mifit-api</p>
+<p>npm install </p>
+<p>npm run dev</p>
+
+<p>La aplicación está disponible en <strong> http://localhost:5173</strong> </p>
