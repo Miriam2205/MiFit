@@ -1,10 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Sidebar } from '../componentes/Sidebar'
-import { Footer } from '../componentes/Footer'
-import {AnadirEntrenamiento} from  '../componentes/AnadirEntrenamiento'
 import '../styles/estilos-estructurales.css'
 import '../styles/reset.css'
 import '../styles/Home.css'
@@ -40,9 +36,6 @@ const listaEntrenamiento = [
 
 //se usa useState para manejar el estado de entrenamiento
 export const EntrenamientoCard = () => {
-    const [entrenamientoAnadido, setEntrenamientoAnadido] = useState(false)
-    const [mostrarFormulario, setMostrarFormulario] = useState(false);
-
     const navigate = useNavigate();
     
 
@@ -53,32 +46,22 @@ export const EntrenamientoCard = () => {
 
             <div className='EntrenamientoCard'>
                 <div className="Bienvenida-user">
-                    <img src="/bienvenida.png" alt="Bienvenido/a usuario/a" className="Bienvenido" />
-
-                    <div className="Bienvenida-card">
-                        <h2 className='Bienvenida-h2'>Bienvenido/a a MiFit</h2>
-                        <p className='Bienvenida-texto'>Explora y añade tus entrenamientos favoritos</p>
-
-                        
-                        {!entrenamientoAnadido ? (
-                            <button className="btn-anadir" onClick={() => navigate('/anadir')}>Añadir entrenamiento</button>
-
-                        ) : (
-                            <p>Entrenamiento añadido: <strong>{entrenamientoAnadido}</strong></p>
-                        )}
-                    </div>
-                        {/*Con el map recorre por la lista de Entrenamiento */}
-                    {listaEntrenamiento.map(lista =>
-                        <Entreno key={lista._id} {...lista} navigate={navigate} />
-                    )}
+                    <img src="/running hero.jpg" alt="Hero de entrenamiento MiFit" className="Bienvenido" />
+                <div className='Bienvenida-titulo'>
+                    <h1 className="Bienvenida-h1">Sigue sumando, sigue sumándote</h1>
+                    <p className='Bienvenida-p'>Añade un entrenamiento y explora otros entrenamientos listos para ti</p>
+                        <button className="btn-anadir" onClick={() => navigate('/anadir')}>
+                            Añadir Entrenamiento
+                        </button>
+                </div>
                 </div>
 
+                {/*Con el map recorre por la lista de Entrenamiento */}
+                {listaEntrenamiento.map(lista =>
+                    <Entreno key={lista._id} {...lista} navigate={navigate} />
+                )}
+
             </div>
-            {mostrarFormulario && (
-                <AnadirEntrenamiento
-                    onClose={() => setMostrarFormulario(false)}
-                />
-            )}
 
         </div>
     )

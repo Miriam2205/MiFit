@@ -4,7 +4,6 @@ import PropTypes from "prop-types";
 import { Routes, Route, Navigate, useLocation } from "react-router-dom";
 
 import { Menu } from "./componentes/NavBar.jsx";
-import { Sidebar } from "./componentes/Sidebar.jsx";
 import { Footer } from "./componentes/Footer.jsx";
 
 import { EntrenamientoCard } from "./componentes/EntrenamientoCard.jsx";
@@ -63,9 +62,8 @@ function App() {
   return (
     <div className="App">
       <Menu />
-      {isAuthenticated && !esAuthPage && <Sidebar />}
 
-      <main className={`Main-content ${isAuthenticated && !esAuthPage ? 'with-sidebar' : ''}`}>
+      <main className="Main-content">
         <Routes>
           {/* LOGIN */}
           <Route path="/login" element={<Login />} />
