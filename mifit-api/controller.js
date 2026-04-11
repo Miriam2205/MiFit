@@ -45,8 +45,48 @@ const registro = async (req, res, next) => {
 //OBTENER ENTRENAMIENTOS
 const getEntrenamiento = async (req, res, next) => {
     try {
-        const buscar = await Entrenamiento.find()
-        res.status(200).json({ status: 200, message: `Buscando workout`, data: buscar })
+        const {
+            nivel,
+            material,
+            minDuracion,
+            maxDuracion,
+            duracionMayorQue,
+            duracionMenorQue
+        } = req.query
+
+        const filtros = {}
+
+        if (nivel) {
+            const niveles = nivel.split(',').map(item => item.trim()).filter(Boolean)
+            if (niveles.length === 1) {
+                filtros.nivel = { $eq: niveles[0] }
+            } else if (niveles.length > 1) {
+                filtros.nivel = { $in: niveles }
+            }
+        }
+
+        if (material) {
+            filtros.material = { $eq: material.trim() }
+        }
+
+        const filtroDuracion = {}
+
+        const min = Number(minDuracion)
+        const max = Number(maxDuracion)
+        const mayorQue = Number(duracionMayorQue)
+        const menorQue = Number(duracionMenorQue)
+
+        if (!Number.isNaN(min)) filtroDuracion.$gte = min
+        if (!Number.isNaN(max)) filtroDuracion.$lte = max
+        if (!Number.isNaN(mayorQue)) filtroDuracion.$gt = mayorQue
+        if (!Number.isNaN(menorQue)) filtroDuracion.$lt = menorQue
+
+        if (Object.keys(filtroDuracion).length > 0) {
+            filtros.duracion = filtroDuracion
+        }
+
+        const buscar = await Entrenamiento.find(filtros)
+        res.status(200).json({ status: 200, message: `Buscando workout`, filtros, data: buscar })
     } catch (error) {
         next(error)
     }

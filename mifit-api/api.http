@@ -8,6 +8,12 @@ ENTRENAMIENTOS
 # Obtener todos los entrenamientos
 GET: http://localhost:3000/entrenamiento
 
+# Filtrar por nivel ($eq o $in) y duración ($gte / $lte)
+GET: http://localhost:3000/entrenamiento?nivel=Principiante,Intermedio&minDuracion=20&maxDuracion=45
+
+# Filtrar por material exacto ($eq) y por duración estricta ($gt / $lt)
+GET: http://localhost:3000/entrenamiento?material=Mancuernas&duracionMayorQue=15&duracionMenorQue=60
+
 # Crear entrenamiento
 http://localhost:3000/entrenamiento
 

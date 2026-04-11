@@ -70,6 +70,14 @@
     color: white;
 }
 
+.Formulario-separador {
+    width: 500px;
+    height: 2px;
+    margin: 1rem 0;
+    border-radius: 999px;
+    background: linear-gradient(90deg, transparent, #71bd81, transparent);
+}
+
 /* Lista ejercicios */
 .ListaEjercicios {
     margin-top: 2rem;

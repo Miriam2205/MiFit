@@ -110,7 +110,7 @@ export const AnadirEntrenamiento = () => {
                 <input name="duracion" type="number" value={entrenamiento.duracion} onChange={handleChangeEntrenamiento} />
             </div>
 
-            <hr />
+            <div className="Formulario-separador" aria-hidden="true"></div>
 
             {/* FORMULARIO DE EJERCICIOS */}
             <h3>Añadir ejercicios</h3>
