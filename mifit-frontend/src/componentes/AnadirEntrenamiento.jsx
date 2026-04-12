@@ -95,62 +95,91 @@ export const AnadirEntrenamiento = () => {
         <div className="Formulario">
             <h2>Crear Entrenamiento Completo</h2>
 
-            {/* DATOS DEL ENTRENAMIENTO */}
-            <div className="Formulario-card">
-                <label>Título:</label>
-                <input name="titulo" value={entrenamiento.titulo} onChange={handleChangeEntrenamiento} />
+            {/* CONTENEDOR DE CARDS LADO A LADO */}
+            <div className="Formulario-cards-container">
+                {/* DATOS DEL ENTRENAMIENTO */}
+                <div className="Formulario-card">
+                    <h3>Datos del entrenamiento</h3>
+                
+                <div className="FormularioCampo">
+                    <label className="Label">Título:</label>
+                    <input className="input" name="titulo" value={entrenamiento.titulo} onChange={handleChangeEntrenamiento} />
+                </div>
 
-                <label>Nivel:</label>
-                <input name="nivel" value={entrenamiento.nivel} onChange={handleChangeEntrenamiento} />
+                <div className="FormularioCampo">
+                    <label className="Label">Nivel:</label>
+                    <input className="input" name="nivel" value={entrenamiento.nivel} onChange={handleChangeEntrenamiento} />
+                </div>
 
-                <label>Material:</label>
-                <input name="material" value={entrenamiento.material} onChange={handleChangeEntrenamiento} />
+                <div className="FormularioCampo">
+                    <label className="Label">Material:</label>
+                    <input className="input" name="material" value={entrenamiento.material} onChange={handleChangeEntrenamiento} />
+                </div>
 
-                <label>Duración (min):</label>
-                <input name="duracion" type="number" value={entrenamiento.duracion} onChange={handleChangeEntrenamiento} />
+                <div className="FormularioCampo">
+                    <label className="Label">Duración (min):</label>
+                    <input className="input" type="number" value={entrenamiento.duracion} onChange={handleChangeEntrenamiento} />
+                </div>
             </div>
 
-            <div className="Formulario-separador" aria-hidden="true"></div>
-
             {/* FORMULARIO DE EJERCICIOS */}
-            <h3>Añadir ejercicios</h3>
-
             <div className="Formulario-card">
-                <label>Ejercicio:</label>
-                <input name="nombre" value={ejercicio.nombre} onChange={handleChangeEjercicio} />
+                <h3>Añadir ejercicios</h3>
+                
+                <div className="FormularioCampo">
+                    <label className="Label">Ejercicio:</label>
+                    <input className="input" name="nombre" value={ejercicio.nombre} onChange={handleChangeEjercicio} />
+                </div>
 
-                <label>Series:</label>
-                <input name="series" type="number" value={ejercicio.series} onChange={handleChangeEjercicio} />
+                <div className="FormularioCampo">
+                    <label className="Label">Series:</label>
+                    <input className="input" name="series" type="number" value={ejercicio.series} onChange={handleChangeEjercicio} />
+                </div>
 
-                <label>Repeticiones:</label>
-                <input name="repeticiones" type="number" value={ejercicio.repeticiones} onChange={handleChangeEjercicio} />
+                <div className="FormularioCampo">
+                    <label className="Label">Repeticiones:</label>
+                    <input className="input" name="repeticiones" type="number" value={ejercicio.repeticiones} onChange={handleChangeEjercicio} />
+                </div>
 
-                <label>Kg:</label>
-                <input name="kg" type="number" value={ejercicio.kg} onChange={handleChangeEjercicio} />
+                <div className="FormularioCampo">
+                    <label className="Label">Kg:</label>
+                    <input className="input" name="kg" type="number" value={ejercicio.kg} onChange={handleChangeEjercicio} />
+                </div>
 
-                <label>Descanso:</label>
-                <input name="descanso" type="number" value={ejercicio.descanso} onChange={handleChangeEjercicio} />
+                <div className="FormularioCampo">
+                    <label className="Label">Descanso:</label>
+                    <input className="input" name="descanso" type="number" value={ejercicio.descanso} onChange={handleChangeEjercicio} />
+                </div>
 
-                <label>Sensaciones:</label>
-                <input name="sensaciones" value={ejercicio.sensaciones} onChange={handleChangeEjercicio} />
+                <div className="FormularioCampo">
+                    <label className="Label">Sensaciones:</label>
+                    <input className="input" name="sensaciones" value={ejercicio.sensaciones} onChange={handleChangeEjercicio} />
+                </div>
 
                 <button className="Boton" onClick={agregarEjercicio}>Añadir ejercicio</button>
+            </div>
             </div>
 
             {/* LISTA DE EJERCICIOS */}
             <div className="ListaEjercicios">
                 <h3>Ejercicios añadidos</h3>
 
-                {listaEjercicios.map((ej, index) => (
-                    <div key={index} className="EjercicioItem">
-                        <strong>{ej.nombre}</strong> ({ej.series} x {ej.repeticiones}) — {ej.kg} kg  
-                        <button className="btn-papelera" onClick={() => eliminarEjercicio(index)}>🗑️</button>
-                    </div>
-                ))}
+                {listaEjercicios.length > 0 ? (
+                    listaEjercicios.map((ej, index) => (
+                        <div key={index} className="EjercicioItem">
+                            <div>
+                                <strong>{ej.nombre}</strong> ({ej.series} x {ej.repeticiones}) — {ej.kg} kg
+                            </div>
+                            <button className="btn-papelera" onClick={() => eliminarEjercicio(index)}>delete</button>
+                        </div>
+                    ))
+                ) : (
+                    <p >No hay ejercicios añadidos</p>
+                )}
             </div>
 
             {/* GUARDAR ENTRENAMIENTO COMPLETO */}
-            <button className="Boton GuardarFinal" onClick={guardarEntrenamiento}>
+            <button className="Boton-GuardarFinal" onClick={guardarEntrenamiento}>
                 Guardar entrenamiento completo
             </button>
 

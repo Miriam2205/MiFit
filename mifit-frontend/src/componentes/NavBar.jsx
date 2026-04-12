@@ -41,7 +41,7 @@ export const Menu = () => {
 
     const toggleMenu = () => setMostrar(prev => !prev)
 
-    //Esta función se ejecuta cuando el usuario selecciona un entrenameinto, navega a la ruta elegida y cierra el menu
+    //Esta función se ejecuta cuando el usuario selecciona un entrenamiento, navega a la ruta elegida y cierra el menu
     const handleSelect = (e) => {
         const value = e.target.value
         if (!value) return
@@ -113,7 +113,7 @@ export const Menu = () => {
 
                 <ul className={`menu-list ${mostrar ? 'open' : ''}`}>
 
-                    <li><NavLink to="/">Inicio</NavLink></li>
+                    
 
                     {/* Menú desplegable de Entrenamientos.  */}
                     <li className="submenu-container">
@@ -143,12 +143,13 @@ export const Menu = () => {
                         </div>
                     </li>
 
+                    <li><NavLink to="/anadir">Añadir entrenamiento</NavLink></li>
                     <li><NavLink to="/consejos">Consejos</NavLink></li>
                     <li><NavLink to="/comunidad">Comunidad</NavLink></li>
 
                     <li>
                         <NavLink to="/perfil" className="usuario-link">
-                            <MdAccountCircle style={{ fontSize: '30px', marginRight: '6px' }} />
+                            <MdAccountCircle style={{ fontSize: '58px', marginRight: '0' }} />
                         </NavLink>
                     </li>
                 </ul>

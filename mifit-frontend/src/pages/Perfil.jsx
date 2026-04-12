@@ -33,7 +33,7 @@ export const Perfil = () => {
         <div className="perfil-container">
             <div className="perfil-header">
                 <h1>¡Hola, {currentUser.nombre }!</h1>
-                <button className="btn-logout" onClick={handleLogout}>Cerrar sesión</button>
+                <button className="btn-cerrarsesion" onClick={handleLogout}>Cerrar sesión</button>
             </div>
 
             <div className="perfil-info">

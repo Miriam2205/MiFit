@@ -1,13 +1,6 @@
 
-@font-face {
-  font-family: 'MiFuente';
-  src: url('/fonts/Montserrat-Medium.otf') format('opentype');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
 body {
-  font-family: 'MiFuente', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Manrope', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 .Categoria {
     width: 90%;
@@ -78,11 +71,11 @@ body {
   margin-top: 1.1rem;
   width: 300px;
   height: 70px;
+  background-color: rgb(185, 46, 219);
+  color: white;
   font-size: 17px;
   font-weight: bold;
-  background: rgba(255, 255, 255, 0.88);
-  color: #1f2937;
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  border: violet solid rgba(255, 255, 255, 0.6);
   border-radius: 20px;
   cursor: pointer;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
@@ -115,15 +108,36 @@ body {
   color: white
 }
 
-
-.Card-imagen{
+.Card-imagen {
   width: 100%;
-  max-width: 350px;
-  aspect-ratio: 14 / 10;
+  height: 100%;
   object-fit: cover;
-  border-radius: 20px; 
-  filter: brightness(0.5); 
-  transition: filter 0.3s ease;
+  transition: transform 0.4s ease;
+}
+.Categoria-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.75) 0%,
+    rgba(0, 0, 0, 0.6) 25%,
+    rgba(0, 0, 0, 0.35) 45%,
+    rgba(0, 0, 0, 0.15) 65%,
+    rgba(0, 0, 0, 0.05) 80%,
+    rgba(0, 0, 0, 0) 100%
+  );
+  transition: opacity 0.3s ease;
+}
+.Categoria-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  opacity: 0.3;
 }
 .Categoria-logo{
     margin: 2rem;
@@ -132,39 +146,89 @@ body {
 
 
 .Categoria-nombre{
-
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-    align-items: center;
+  width: 100%;
+  margin-bottom: 6rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
-.Categoria-card{
+.Categoria-entreno,  .Categoria-entreno {
+  margin-top: 2.5rem;
+}
+
+.Categoria-card {
   position: relative;
   width: 260px;
-  height: auto;
-  margin: 3rem;
-  border-radius: 18px;
-  transition: transform 0.2s;
+  height: 240px;
+  margin: 0;
+  border-radius: 20px;
+  overflow: hidden;
   display: inline-block;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
 }
 
-.Curso-titulo{
-    font-size: 2em;
-    margin: 1rem;
+
+.Categoria-card:hover .Card-imagen {
+  transform: scale(1.05);
+  filter: brightness(0.6);
 }
-.Categoria-h4{
-    margin: 2rem;
+
+.Card-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  padding: 16px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: none;
+}
+
+.Categoria-container {
+  width: min(1820px, 100%);
+  margin: 0 auto;
+  padding: 0 3rem; /* 🔥 ESTE ES EL TRUCO */
+}
+.Categoria-card:hover {
+  transform: translateY(-5px);
+}
+
+.Categoria-card:hover .Card-imagen {
+  transform: scale(1.05);
+}
+
+.Categoria-card:hover::before {
+  opacity: 0.9;
+}
+.Curso-titulo {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.Categoria-descripcion {
+  margin: 0.55rem 0 0;
+  color: rgba(17, 24, 39, 0.72);
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1.45;
 }
 
 .Categoria-ul{
- display: flex;
-  flex-direction: row;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 260px); /* 🔥 tamaño fijo como tus cards */
   gap: 2rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  list-style: none;
 
+  justify-content: flex-start; /* 🔥 alinea todo a la izquierda */
+  list-style: none;
+  padding: 0;
 }
 
 .Categoria-lista{
@@ -178,16 +242,52 @@ margin-top: 6rem;
 
 }
 
-
-
 .Card-titulo {
-  position: absolute;
-  bottom: 12px;
-  left: 16px;
-  padding: 10px 12px;
   color: #fff;
   font-weight: 700;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  font-size: 16px;
+  margin: 0 0 8px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  line-height: 1.2;
+}
+
+.Card-nivel {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 12px;
+  font-family: 'Manrope', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-weight: 300;
+  margin: 0 0 10px 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.22);
+}
+
+.Card-button {
+  width: 100%;
+  height: 40px;
+  align-self: flex-start;
+  padding: 6px 20px;
+  background-color: rgb(248, 248, 248);
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 8px;
+  font-family: 'Manrope', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(185, 46, 219, 0.4);
+}
+
+.Card-button:hover {
+  background-color: rgb(210, 60, 240);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(185, 46, 219, 0.6);
+}
+
+.Card-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(185, 46, 219, 0.4);
 }
 
 .Card-contenedor{
@@ -195,9 +295,8 @@ margin-top: 6rem;
 }
 @media (min-width: 1900px) {
   .Categoria-ul {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
 }
 
 @media (max-width: 768px) {
@@ -228,24 +327,52 @@ margin-top: 6rem;
   }
 
   .Categoria-card {
-    width: 180px;
-    margin: 1.2rem;
+    width: min(100%, 180px);
+    height: 200px;
+    margin: 0;
+  }
+
+  .Card-overlay {
+    height: 90px;
+    padding: 10px 12px;
   }
 
   .Card-titulo {
-    font-size: 14px;
-    left: 12px;
-    bottom: 10px;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+
+  .Card-nivel {
+    font-size: 11px;
+    font-weight: 300;
+    margin-bottom: 8px;
+  }
+
+  .Categoria-descripcion {
+    font-size: 0.95rem;
+  }
+
+  .Card-button {
+    padding: 5px 16px;
+    font-size: 12px;
   }
 
   .Categoria-nombre {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
+    width: min(760px, calc(100% - 2rem));
+    text-align: left;
+  }
+
+  .Categoria-entreno + .Categoria-entreno {
+    margin-top: 1.5rem;
   }
 
   .Categoria-ul {
+    width: min(760px, calc(100% - 2rem));
     grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
   }
 
   .Curso-titulo {
@@ -263,7 +390,7 @@ margin-top: 6rem;
 
 @media (min-width: 1200px) {
   .Categoria-card {
-    width: 340px;
+    width: min(100%, 340px);
   }
 
   .Card-imagen {
@@ -286,7 +413,12 @@ margin-top: 6rem;
   font-size: 1.6em;
 }
   .Categoria-ul {
+    width: min(390px, calc(100% - 1rem));
     grid-template-columns: 1fr;
+  }
+
+  .Categoria-nombre {
+    width: min(390px, calc(100% - 1rem));
   }
 
   .Categoria-lista {

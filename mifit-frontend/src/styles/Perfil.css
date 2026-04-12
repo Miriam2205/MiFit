@@ -18,29 +18,38 @@
     color: #111827;
 }
 
-/* Botones principales */
-.btn-logout,
+/* Botones principales del perfil */
+.btn-cerrarsesion,
 .btn-edit {
-    padding: 0.75rem 1.25rem;
-    border: none;
-    border-radius: 999px;
-    font-weight: 700;
-    letter-spacing: 0.2px;
+    width: 120px;
+    height: 30px;
+    border-radius: 8px;
+    
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
 
-.btn-logout {
-    background: linear-gradient(120deg, #ef4444, #f87171);
-    color: white;
-    box-shadow: 0 10px 30px rgba(239, 68, 68, 0.25);
+.btn-cerrarsesion { 
+    color: red;
+    background: transparent;
+    border: none;
+    width: auto;
+    height: auto;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    font-weight: 700;
+    text-decoration: none;
+    
+
+.btn-cerrarsesion:hover {
+    transform: none;
+    filter: none;
+    text-decoration: underline;
+}
 }
 
-.btn-logout:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 12px 36px rgba(239, 68, 68, 0.3);
-    filter: brightness(0.98);
-}
+
 
 .btn-edit {
     background: linear-gradient(120deg, #7c3aed, #a855f7);
