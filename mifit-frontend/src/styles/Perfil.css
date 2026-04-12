@@ -21,10 +21,6 @@
 /* Botones principales del perfil */
 .btn-cerrarsesion,
 .btn-edit {
-    width: 120px;
-    height: 30px;
-    border-radius: 8px;
-    
     cursor: pointer;
     transition: transform 0.15s ease, box-shadow 0.15s ease, filter 0.15s ease;
 }
@@ -40,16 +36,13 @@
     box-shadow: none;
     font-weight: 700;
     text-decoration: none;
-    
+}
 
 .btn-cerrarsesion:hover {
     transform: none;
     filter: none;
     text-decoration: underline;
 }
-}
-
-
 
 .btn-edit {
     background: linear-gradient(120deg, #7c3aed, #a855f7);

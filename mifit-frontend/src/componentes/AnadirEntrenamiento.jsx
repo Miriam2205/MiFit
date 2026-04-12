@@ -5,57 +5,59 @@ import { useToast } from "../hooks/useToast"
 import "../styles/anadir-entrenamiento.css"
 
 const API_URL = import.meta.env.VITE_API_URL
+const initialEntrenamiento = {
+    titulo: "",
+    nivel: "",
+    material: "",
+    duracion: "",
+}
+
+const initialEjercicio = {
+    nombre: "",
+    series: "",
+    repeticiones: "",
+    kg: "",
+    descanso: "",
+    sensaciones: "",
+}
+
 // 1 Formulario para rellenar
 export const AnadirEntrenamiento = () => {
     
-    const [entrenamiento, setEntrenamiento] = useState({
-        titulo: "",
-        nivel: "",
-        material: "",
-        duracion: "",
-    });
+    const [entrenamiento, setEntrenamiento] = useState(initialEntrenamiento);
 
     // 2 Formulario para añadir ejercicios y característias del entrenamiento
-    const [ejercicio, setEjercicio] = useState({
-        nombre: "",
-        series: "",
-        repeticiones: "",
-        kg: "",
-        descanso: "",
-        sensaciones: "",
-    });
+    const [ejercicio, setEjercicio] = useState(initialEjercicio);
 
     // usamos el useState para guardar la lista de ejercicios añadidos 
     const [listaEjercicios, setListaEjercicios] = useState([])
     const { toast, showToast, hideToast } = useToast("success")
 
     const handleChangeEntrenamiento = (e) => {
-        setEntrenamiento({ ...entrenamiento, [e.target.name]: e.target.value })
+        setEntrenamiento((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     };
 
 
     const handleChangeEjercicio = (e) => {
-        setEjercicio({ ...ejercicio, [e.target.name]: e.target.value })
+        setEjercicio((prev) => ({ ...prev, [e.target.name]: e.target.value }))
     };
 
     // Añadir ejercicio a la lista
     const agregarEjercicio = () => {
-        setListaEjercicios([...listaEjercicios, ejercicio])
+        if (!ejercicio.nombre.trim()) {
+            showToast("Añade el nombre del ejercicio", "error")
+            return
+        }
+
+        setListaEjercicios((prev) => [...prev, ejercicio])
 
         // Reset del ejercicio
-        setEjercicio({
-            nombre: "",
-            series: "",
-            repeticiones: "",
-            kg: "",
-            descanso: "",
-            sensaciones: "",
-        });
+        setEjercicio(initialEjercicio);
     };
 
     // Eliminar ejercicio
     const eliminarEjercicio = (index) => {
-        setListaEjercicios(listaEjercicios.filter((_, i) => i !== index))
+        setListaEjercicios((prev) => prev.filter((_, i) => i !== index))
     };
 
     // Guardar entrenamiento completo
@@ -76,12 +78,7 @@ export const AnadirEntrenamiento = () => {
                 showToast("Entrenamiento guardado correctamente ✔");
 
                 // Reset total
-                setEntrenamiento({
-                    titulo: "",
-                    nivel: "",
-                    material: "",
-                    duracion: "",
-                });
+                setEntrenamiento(initialEntrenamiento);
                 setListaEjercicios([]);
             } else {
                 showToast("Error guardando entrenamiento", "error")
@@ -118,7 +115,7 @@ export const AnadirEntrenamiento = () => {
 
                 <div className="FormularioCampo">
                     <label className="Label">Duración (min):</label>
-                    <input className="input" type="number" value={entrenamiento.duracion} onChange={handleChangeEntrenamiento} />
+                    <input className="input" name="duracion" type="number" value={entrenamiento.duracion} onChange={handleChangeEntrenamiento} />
                 </div>
             </div>
 
@@ -170,11 +167,11 @@ export const AnadirEntrenamiento = () => {
                             <div>
                                 <strong>{ej.nombre}</strong> ({ej.series} x {ej.repeticiones}) — {ej.kg} kg
                             </div>
-                            <button className="btn-papelera" onClick={() => eliminarEjercicio(index)}>delete</button>
+                            <button className="btn-papelera" onClick={() => eliminarEjercicio(index)} aria-label="Eliminar ejercicio">🗑️</button>
                         </div>
                     ))
                 ) : (
-                    <p >No hay ejercicios añadidos</p>
+                    <p className="MensajeVacio">No hay ejercicios añadidos</p>
                 )}
             </div>
 

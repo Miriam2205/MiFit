@@ -54,21 +54,6 @@
     margin: 0 0 0.5rem 0;
 }
 
-.CerrarForm {
-    background: none;
-    border: none;
-    font-size: 22px;
-    position: absolute;
-    right: 10px;
-    top: 10px;
-    cursor: pointer;
-    color: #444;
-}
-
-.CerrarForm:hover {
-    color: red;
-}
-
 /* Campos formulario */
 .FormularioCampo {
     display: flex;
@@ -120,10 +105,6 @@
     transform: translateY(-2px);
 }
 
-.Formulario-separador {
-    display: none;
-}
-
 /* Lista ejercicios */
 .ListaEjercicios {
     margin-top: 2rem;
@@ -161,7 +142,7 @@
 }
 
 .Boton-GuardarFinal {
-    
+    width: 100%;
     max-width: 1200px;
     margin: 2rem auto;
     padding: 14px 24px;
@@ -175,6 +156,11 @@
     cursor: pointer;
     transition: all 0.3s ease;
     box-shadow: 0 8px 20px rgba(136, 38, 221, 0.35);
+}
+
+.Boton-GuardarFinal:hover {
+    box-shadow: 0 12px 28px rgba(136, 38, 221, 0.45);
+    transform: translateY(-2px);
 }
 
 /* mensaje vacio */
@@ -192,11 +178,6 @@
     border-radius: 8px;
     color: white;
     text-align: center;
-}
-
-.GuardarFinal:hover {
-    box-shadow: 0 12px 28px rgba(136, 38, 221, 0.45);
-    transform: translateY(-2px);
 }
 
 /* Responsive */
@@ -228,16 +209,12 @@
         gap: 0.8rem;
     }
     
-    .Formulario-separador {
-        display: none;
-    }
-    
     .ListaEjercicios {
         max-width: 100%;
         padding: 0 0.5rem;
     }
     
-    .GuardarFinal {
+    .Boton-GuardarFinal {
         max-width: 100%;
         padding: 12px 20px;
         font-size: 15px;
