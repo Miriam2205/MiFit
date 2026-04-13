@@ -4,13 +4,27 @@ const cors = require('cors')
 const {router} = require('./router')
 const {Usuario} = require('./schema')
 const bcrypt = require('bcrypt')
+const {middleware404, middleware500} = require('./middlewares')
 
 const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL;
 let server;
+let databaseReadyPromise;
 
 const conectar = async() => {
-    try {
+    if (!DATABASE_URL) {
+        throw new Error('Falta la variable de entorno DATABASE_URL')
+    }
+
+    if (mongoose.connection.readyState === 1) {
+        return
+    }
+
+    if (databaseReadyPromise) {
+        return databaseReadyPromise
+    }
+
+    databaseReadyPromise = (async () => {
         await mongoose.connect(DATABASE_URL)
 
         // Crear usuario de prueba si no existe
@@ -32,11 +46,16 @@ const conectar = async() => {
         }
 
         console.info('Conexión con MongoDB establecida correctamente')
+    })()
+
+    try {
+        await databaseReadyPromise
     } catch (error) {
+        databaseReadyPromise = null
         console.error(`Error al conectar ${error.message}`)
+        throw error
     }
 }
-conectar()
 
 const cerrarServidor = (signal) => {
     console.info(`\n${signal} recibido. Cerrando servidor y desconectando MongoDB...`)
@@ -66,13 +85,33 @@ const cerrarServidor = (signal) => {
         })
 }
 
-process.on('SIGINT', () => cerrarServidor('SIGINT'))
-process.on('SIGTERM', () => cerrarServidor('SIGTERM'))
-
 const app = express()
 app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(async (req, res, next) => {
+    try {
+        await conectar()
+        next()
+    } catch (error) {
+        next(error)
+    }
+})
 app.use(router)
+app.use(middleware404)
+app.use(middleware500)
 
-server = app.listen(PORT, () => console.info(`API escuchando en el puerto ${PORT}`))
+if (!process.env.VERCEL) {
+    process.on('SIGINT', () => cerrarServidor('SIGINT'))
+    process.on('SIGTERM', () => cerrarServidor('SIGTERM'))
+
+    conectar()
+        .then(() => {
+            server = app.listen(PORT, () => console.info(`API escuchando en el puerto ${PORT}`))
+        })
+        .catch(() => {
+            process.exit(1)
+        })
+}
+
+module.exports = app

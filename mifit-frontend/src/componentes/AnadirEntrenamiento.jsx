@@ -4,7 +4,7 @@ import { Toast } from "./Toast"
 import { useToast } from "../hooks/useToast"
 import "../styles/anadir-entrenamiento.css"
 
-const API_URL = import.meta.env.VITE_API_URL
+const API_URL = import.meta.env.VITE_EXPRESS || import.meta.env.VITE_API_URL
 const initialEntrenamiento = {
     titulo: "",
     nivel: "",

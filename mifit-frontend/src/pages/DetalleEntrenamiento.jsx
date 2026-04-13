@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import '../styles/detalle-entrenamiento.css';
 
-const API_URL = import.meta.env.VITE_API_URL 
+const API_URL = import.meta.env.VITE_EXPRESS || import.meta.env.VITE_API_URL 
 
 //En esta página mostramos el detalle completo de un entrenamiento seleccionado por el usuario que previamnete habíamos creado en AñadirEntrenamiento
 export const DetalleEntrenamiento = () => {

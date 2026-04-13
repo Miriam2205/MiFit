@@ -4,7 +4,7 @@ import { useAuth } from "../context/AuthContext.jsx";
 import "../styles/login-page.css"
 
 export const Login = () => {
-  const API_URL = import.meta.env.VITE_API_URL 
+  const API_URL = import.meta.env.VITE_EXPRESS || import.meta.env.VITE_API_URL 
 
   const navigate = useNavigate()
   const { login } = useAuth()

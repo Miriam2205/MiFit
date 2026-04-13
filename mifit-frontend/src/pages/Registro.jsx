@@ -4,7 +4,7 @@ import { useAuth } from '../context/AuthContext.jsx';
 import '../styles/registro.css'
 
 export const Register = () => {
-  const API_URL = import.meta.env.VITE_API_URL 
+  const API_URL = import.meta.env.VITE_EXPRESS || import.meta.env.VITE_API_URL 
   //Guardamos los datos del formulario 
   const [formData, setFormData] = useState({
     nombre: '',

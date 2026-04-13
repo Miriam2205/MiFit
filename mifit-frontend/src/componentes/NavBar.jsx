@@ -10,7 +10,7 @@ import { Modal } from './ConfirmModal'
 import { useToast } from '../hooks/useToast'
 
 // Usa la URL de la API desde las variables de entorno de Vite
-const API_URL = import.meta.env.VITE_API_URL 
+const API_URL = import.meta.env.VITE_EXPRESS || import.meta.env.VITE_API_URL 
 
 export const Menu = () => {
     //Estado para manejar el menu de la hamburguesa 
