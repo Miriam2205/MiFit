@@ -5,6 +5,7 @@ const {router} = require('./router')
 const {Usuario} = require('./schema')
 const bcrypt = require('bcrypt')
 const {middleware404, middleware500} = require('./middlewares')
+const {httpLogger} = require('./logger/morgan')
 
 const PORT = process.env.PORT || 3000;
 const DATABASE_URL = process.env.DATABASE_URL;
@@ -87,6 +88,7 @@ const cerrarServidor = (signal) => {
 
 const app = express()
 app.use(cors())
+app.use(httpLogger)
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(async (req, res, next) => {

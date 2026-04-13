@@ -1,62 +1,101 @@
-<h2>MiFit</h2> 
-MiFit es una <strong>aplicación fitness</strong> que permite al usuario explorar distintos tipos de entrenamiento por categoría y niveles. También el usuario podrá crear su propio registro de entrenamiento y navegar por consejos y acceso a una comunidad activa
+# MiFit
 
-<h2>Objetivo del proyecto🎯</h2>
-<p>MiFit es una API que ayuda al usuario que necesita un apoyo de <strong>rutinas de entrenamiento</strong>, a la vez que puede <strong>registrar</strong> sus propios ejercicios para llevar su <strong>progreso</strong></p>
+Aplicacion web de fitness con frontend en React y backend en Express. En esta aplicación el usuario puede registrarse, iniciar sesion, consultar  entrenamientos, añadir tus propios entrenamientos, acceso a consejos/comunidad y gestion basica del perfil de usuario.
 
-<h2>Características</h2>
+## Demo
 
-<h3>Entrenamientos🏋️‍♀️</h3>
-<p>-Programas de calistenia</p>
-<p>-Entrenamientos Full Body e HIIT</p>
-<p>-Rutinas por grupo musculares</p>
-
-<h3>Gestión de Entrenamientos📈</h3>
-<p>-Añadir nuevos entrenamientos personalizados</p>
-<p>-Ver detalles completos de cada entrenamiento</p>
-<p>-Seguimiento de ejercicios realizados</p>
-
-<h3>Comunidad🤝</h3>
-<p>-Compartir logros y experiencias</p>
-<p>-Consejos de entrenamieto</p>
-<p>-Interacción entre usuarios</p>
-
-<h3>Perfil de Usuario🙋‍♀️</h3>
-<p>-Editar información personal</p>
-<p>-Ver etádisticas de entrenamiento </p>
-
-<h2>Tecnologías utilizadas💻</h2>
-<h3>Frontend</h3>
-<p>React, Vite,CSS, React </p>
-<h3>Backend</h3>
-<p>Nodejs, Epressjs, JSON </p>
-<h3>Base de datos</h3>
-<p>MongoDB</p>
-
-<h2>Instalación y Ejecución🚀</h2>
-
-<h3>Requisitos de instalación</h3>
-<p>Antes de comenzar, asegúrate de tener instalado:</p>
-- Node.js (incluye npm)
-- Git (opcional, para clonar el repositorio)
-
-> Nota: Las carpetas `node_modules` no están incluidas en el repositorio.  
-> Las dependencias se instalarán automáticamente mediante `npm install`.
+- mifit-frontend (Vercel): https://mifit-frontend.vercel.app
+- mifit-api (Vercel): https://mifit-api.vercel.app
 
 
-## Instalación y ejecución del proyecto
+## Funcionalidades
 
-El proyecto está dividido en dos partes: **frontend** y **backend**.  
-Es necesario ejecutar cada una en una terminal distinta.
+- Registro e inicio de sesion de usuarios.
+- Añadir entrenamientos para ver el progreso
+- Consulta de listas de  entrenamientos y ejercicios.
+- Navegacion por niveles y grupos musculares.
+- Edicion de perfil de usuario.
 
-<h3>Frontend</h3>
-<p>cd mifit-frontend</p>
-<p>npm install(para descargar las dependencias)</p>
-<p>npm run dev</p>
 
-<h3>Backend</h3>
-<p>cd mifit-api</p>
-<p>npm install </p>
-<p>npm run dev</p>
+## Tecnologias
 
-<p>La aplicación está disponible en <strong> http://localhost:5173</strong> </p>
+### Frontend
+
+- React
+- Vite
+- React Router
+- CSS
+- Vercel
+
+### Backend
+
+- Node.js
+- Express
+- Mongoose
+- JWT
+
+### Base de datos
+
+- MongoDB Atlas
+
+
+## Variables de entorno
+
+### Backend mifit-api
+
+En la carpeta `mifit-api`, creamos un archivo `.env` con estas variables y esto mismo lo pondremos en vercel en :
+
+```env
+DATABASE_URL=mongodb+srv://usuario:password@cluster0.xxxxx.mongodb.net/mifitdb?retryWrites=true&w=majority&appName=Cluster0
+PORT=3000
+JWT_SECRET=tu_clave_secreta
+```
+
+
+### Frontend mifit-frontend
+
+En la carpeta `mifit-frontend`, creamos también un archivo `.env` para desarrollo local:
+
+```env
+VITE_EXPRESS=http://localhost:3000
+```
+
+En Vercel, en el proyecto `mifit-frontend`, configuramos el env:
+
+```env
+VITE_EXPRESS=https://mifit-api.vercel.app
+```
+
+
+## Ejecucion en local
+
+Para ejecutar la API en local tenemos que abrir dos terminales: una para backend y otra para frontend.
+
+### 1 Backend (terminal 1)
+
+```bash
+cd mifit-api
+npm install
+npm run dev
+```
+
+### 2 Frontend (terminal 2)
+
+```bash
+cd mifit-frontend
+npm install
+npm run dev
+```
+
+## Despliegue en Vercel
+Para desplegar el proyecto en vercel he desplegado los dos entornos el mifit-api y mifit-frontend. 
+Los pasos para desplegar el proyecto son: 
+
+1. Desplegar `mifit-api`.
+2. Configurar variables del backend (`DATABASE_URL`, `PORT`, `JWT_SECRET`).
+3. Hacer redeploy del backend.
+4. Desplegar `mifit-frontend`.
+5. Configurar `VITE_EXPRESS` con la URL del backend en Vercel.
+6. Hacer redeploy del frontend.
+
+Despues de modificar variables de entorno en Vercel, hacemos deploy de nuevo y listo.
