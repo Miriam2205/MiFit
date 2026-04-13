@@ -98,7 +98,7 @@ export const Menu = () => {
         <header className='Header'>
             <nav className='Navbar'>
                 <Link to="/">
-                    <img src="/logomifit.png" alt="logoMifit" className='logoMifit' />
+                    <img src="/logomifit.svg" alt="logoMifit" className='logoMifit' />
                 </Link>
 
                 {/*Botón que se muestra cuando la pantalla es pequeña y muestra el menú hamburguesa*/}
