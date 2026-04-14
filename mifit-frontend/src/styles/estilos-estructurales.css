@@ -1,4 +1,4 @@
-
+﻿
 .menu-list li a,
 .entrenamiento-select,
 .entrenamiento-delete,
@@ -88,8 +88,8 @@
 }
 
 .entrenamiento-select:focus {
-  border-color: #8826DD;
-  box-shadow: 0 0 0 3px rgba(136,38,221,0.15);
+  border-color: #a855f7;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247,0.15);
 }
 
 .entrenamiento-chevron {
@@ -128,14 +128,14 @@
 }
 
 .menu-list li a:hover {
-  color: #7c23d3;
-  background: rgba(136, 38, 221, 0.08);
+  color: #a855f7;
+  background: rgba(168, 85, 247, 0.08);
 }
 
 .usuario-link:hover,
 .usuario-link.active {
-  background: #8826DD;
-  border-color: #8826DD;
+  background: #a855f7;
+  border-color: #a855f7;
   color: white;
 }
 
@@ -196,7 +196,7 @@
   .menu-list li a:hover,
   .usuario-link:hover,
   .usuario-link.active {
-    background: rgba(136, 38, 221, 0.24);
+    background: rgba(168, 85, 247, 0.24);
     color: #ffffff;
     box-shadow: none;
   }

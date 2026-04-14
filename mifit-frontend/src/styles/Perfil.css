@@ -1,4 +1,4 @@
-/* Layout base */
+﻿/* Layout base */
 .perfil-container {
     max-width: 720px;
     margin: 2rem auto;
@@ -45,7 +45,7 @@
 }
 
 .btn-edit {
-    background: linear-gradient(120deg, #7c3aed, #a855f7);
+    background: linear-gradient(120deg, #a855f7, #a855f7);
     color: white;
     width: 100%;
     min-height: 48px;
@@ -53,13 +53,13 @@
     border: none;
     border-radius: 12px;
     font-weight: 700;
-    box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25);
+    box-shadow: 0 10px 30px rgba(168, 85, 247, 0.25);
     margin-top: 0.5rem;
 }
 
 .btn-edit:hover {
     transform: translateY(-2px);
-    box-shadow: 0 12px 36px rgba(124, 58, 237, 0.32);
+    box-shadow: 0 12px 36px rgba(168, 85, 247, 0.32);
     filter: brightness(1.02);
 }
 
@@ -152,7 +152,7 @@
     left: 0;
     width: 6px;
     height: 100%;
-    background: linear-gradient(180deg, #7c3aed, #a855f7);
+    background: linear-gradient(180deg, #a855f7, #a855f7);
 }
 
 .reto-card h4 {
@@ -176,7 +176,7 @@
 }
 
 .barra-llena {
-    background: linear-gradient(90deg, #7c3aed, #a855f7);
+    background: linear-gradient(90deg, #a855f7, #a855f7);
     height: 100%;
     transition: width 0.3s ease;
 }
@@ -185,7 +185,7 @@
     margin: 0;
     font-size: 12px;
     font-weight: 700;
-    color: #7c3aed;
+    color: #a855f7;
     text-align: right;
     padding-right: 4px;
 }

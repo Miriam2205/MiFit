@@ -1,4 +1,4 @@
-.Formulario {
+﻿.Formulario {
     margin-top: 6rem;
     display: flex;
     flex-direction: column;
@@ -78,8 +78,8 @@
 }
 
 .input:focus {
-    border: 2px solid #8826DD;
-    box-shadow: 0 0 0 3px rgba(136, 38, 221, 0.15);
+    border: 2px solid #a855f7;
+    box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15);
     outline: none;
 }
 
@@ -88,8 +88,8 @@
     margin-top: 1rem;
     padding: 12px 24px;
     background-color: transparent;
-    color: #8826DD;
-    border: 2px solid #8826DD;
+    color: #a855f7;
+    border: 2px solid #a855f7;
     border-radius: 12px;
     font-size: 15px;
     font-weight: 600;
@@ -99,9 +99,9 @@
 }
 
 .Boton:hover {
-    background-color: #8826DD;
+    background-color: #a855f7;
     color: white;
-    box-shadow: 0 6px 16px rgba(136, 38, 221, 0.35);
+    box-shadow: 0 6px 16px rgba(168, 85, 247, 0.35);
     transform: translateY(-2px);
 }
 
@@ -116,11 +116,11 @@
 }
 
 .EjercicioItem {
-    background: rgba(136, 38, 221, 0.08);
+    background: rgba(168, 85, 247, 0.08);
     padding: 1.2rem;
     border-radius: 12px;
     margin-top: 1rem;
-    border-left: 4px solid #8826DD;
+    border-left: 4px solid #a855f7;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -155,11 +155,11 @@
     font-family: 'Manrope', system-ui, -apple-system, sans-serif;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(136, 38, 221, 0.35);
+    box-shadow: 0 8px 20px rgba(168, 85, 247, 0.35);
 }
 
 .Boton-GuardarFinal:hover {
-    box-shadow: 0 12px 28px rgba(136, 38, 221, 0.45);
+    box-shadow: 0 12px 28px rgba(168, 85, 247, 0.45);
     transform: translateY(-2px);
 }
 

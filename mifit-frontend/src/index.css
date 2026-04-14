@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
   font-family: 'Manrope';
   src: url('./assets/fuentes/Manrope-Light.ttf') format('truetype');
   font-weight: 300;
@@ -60,12 +60,12 @@
 
 a {
   font-weight: 500;
-  color: #4f46e5;
+  color: #a855f7;
   text-decoration: none;
 }
 
 a:hover {
-  color: #312e81;
+  color: #a855f7;
 }
 
 body {
