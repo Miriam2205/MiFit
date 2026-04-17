@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 
 //En este array tenemos todos los entrenamientos pero sólo mostraremos los de nivel intermedio
@@ -28,22 +29,28 @@ const planes = [
 		titulo: 'Torso Intermedio',
 		nivel: 'intermedio',
 		material: 'mancuernas',
+		imagen: '/torso.png',
 		duracion: 40,
-		objetivo: 'Empuje y tirón equilibrado'
+		objetivo: 'Empuje y tirón equilibrado',
+		ruta: '/torso'
 	},
 	{
 		titulo: 'Pierna Intermedia',
 		nivel: 'intermedio',
 		material: 'barra o mancuernas',
+		imagen: '/sentadilla.png',
 		duracion: 45,
-		objetivo: 'Fuerza de tren inferior y estabilidad'
+		objetivo: 'Fuerza de tren inferior y estabilidad',
+		ruta: '/pierna'
 	},
 	{
 		titulo: 'HIIT Intermedio',
 		nivel: 'intermedio',
 		material: 'sin material',
+		imagen: '/hiit.jpg',
 		duracion: 30,
-		objetivo: 'Cardio intenso sin llegar al límite'
+		objetivo: 'Cardio intenso sin llegar al límite',
+		ruta: '/hiit'
 	},
 	{
 		titulo: 'Fullbody Avanzado',
@@ -62,6 +69,7 @@ const planes = [
 ];
 
 export const EntrenamientoIntermedio = () => {
+	const navigate = useNavigate();
 	return (
 		<div className="planes-page">
 			<h1>Entrenamientos intermedios</h1>
@@ -70,8 +78,13 @@ export const EntrenamientoIntermedio = () => {
 				{planes.map((plan) => {
 					if (plan.nivel !== 'intermedio') return null;
 					return (
-						<div className="tarjeta-plan" key={plan.titulo}>
-							<h3>{plan.titulo}</h3>
+						<div className="tarjeta-plan" key={plan.titulo} onClick={() => navigate(plan.ruta)} style={{ cursor: 'pointer' }}>							{plan.imagen && (
+								<img
+									src={plan.imagen}
+									alt={plan.titulo}
+									className="miniatura-plan"
+								/>
+							)}							<h3>{plan.titulo}</h3>
 							<p className="etiqueta-nivel">Nivel: {plan.nivel}</p>
 							<p>Material: {plan.material}</p>
 							<p>Duración: {plan.duracion} min</p>

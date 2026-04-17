@@ -1,4 +1,5 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 //Array de planes de entrenamiento, podemos ver que tenemos de todos los niveles pero con el filter solo nos mostrará en pantalla el que le indiquemos, en este caso el avanzado.
 const planes = [
@@ -48,26 +49,33 @@ const planes = [
 		titulo: 'Fullbody Avanzado',
 		nivel: 'avanzado',
 		material: 'barra + discos',
+		imagen: '/flexionfullbody.jpg',
 		duracion: 55,
-		objetivo: 'Fuerza y potencia'
+		objetivo: 'Fuerza y potencia',
+		ruta: '/fullbody'
 	},
 	{
 		titulo: 'Torso/Pierna Avanzado',
 		nivel: 'avanzado',
 		material: 'barra + discos',
+		imagen: '/torso.png',
 		duracion: 60,
-		objetivo: 'Volumen y carga alta'
+		objetivo: 'Volumen y carga alta',
+		ruta: '/torso'
 	},
 	{
 		titulo: 'HIIT Fuego',
 		nivel: 'avanzado',
 		material: 'sin material',
+		imagen: '/hiit.jpg',
 		duracion: 30,
-		objetivo: 'Cardio duro con intervalos'
+		objetivo: 'Cardio duro con intervalos',
+		ruta: '/hiit'
 	}
 ];
 
 export const EntrenamientoAvanzado = () => {
+	const navigate = useNavigate();
 	return (
 		<div className="planes-page">
 			<h1>Entrenamientos avanzados</h1>
@@ -76,7 +84,14 @@ export const EntrenamientoAvanzado = () => {
 					{/*Con esta línea lo que estamos diciendo es que de toda la lista nos filtre los que son de nivel avanzado*/}
 					if (plan.nivel !== 'avanzado') return null
 					return (
-						<div className="tarjeta-plan" key={plan.titulo}>
+						<div className="tarjeta-plan" key={plan.titulo} onClick={() => navigate(plan.ruta)} style={{ cursor: 'pointer' }}>
+							{plan.imagen && (
+								<img
+									src={plan.imagen}
+									alt={plan.titulo}
+									className="miniatura-plan"
+								/>
+							)}
 							<h3>{plan.titulo}</h3>
 							<p className="etiqueta-nivel">Nivel: {plan.nivel}</p>
 							<p>Material: {plan.material}</p>

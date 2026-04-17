@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 
 //En este array tenemos todos los entrenamientos pero sólo mostraremos los de nivel principiante
 const principiantes = [
@@ -6,23 +7,28 @@ const principiantes = [
         titulo: 'Fullbody Express',
         nivel: 'principiante',
         material: 'sin material',
-        imagen: "/Fullbody.png",
+        imagen: "/sentadilla.png",
         duracion: 25,
-        objetivo: 'Mover todo el cuerpo sin morir en el intento'
+        objetivo: 'Mover todo el cuerpo sin morir en el intento',
+        ruta: '/fullbody'
     },
     {
         titulo: 'Abdominales en casa',
         nivel: 'principiante',
         material: 'esterilla',
+        imagen: "/Abdominales.png",
         duracion: 20,
-        objetivo: 'Core básico para empezar'
+        objetivo: 'Core básico para empezar',
+        ruta: '/abdominales'
     },
     {
         titulo: 'Primera dominada',
         nivel: 'principiante',
         material: 'goma + barra',
+        imagen: "/dominadareto.jpg",
         duracion: 30,
-        objetivo: 'Progresiones sencillas para la primera repetición'
+        objetivo: 'Progresiones sencillas para la primera repetición',
+        ruta: '/dominada'
     },
     {
         titulo: 'Torso Intermedio',
@@ -48,6 +54,7 @@ const principiantes = [
 ];
 
 export const EntrenamientoPrincipiantes = () => {
+    const navigate = useNavigate();
     return (
         <div className="planes-page">
             <h1>Entrenamientos para principiantes</h1>
@@ -56,7 +63,7 @@ export const EntrenamientoPrincipiantes = () => {
                 {principiantes.map((plan) => {
                     if (plan.nivel !== 'principiante') return null;
                     return (
-                        <div className="tarjeta-plan" key={plan.titulo}>
+                        <div className="tarjeta-plan" key={plan.titulo} onClick={() => navigate(plan.ruta)} style={{ cursor: 'pointer' }}>
                             {plan.imagen && (
                                 <img
                                     src={plan.imagen}
