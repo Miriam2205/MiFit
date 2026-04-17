@@ -1,4 +1,8 @@
-require('dotenv').config()
+// Cargar dotenv solo si no estamos en Vercel
+if (!process.env.VERCEL) {
+  require('dotenv').config()
+}
+
 const mongoose = require('mongoose')
 const express = require('express')
 const cors = require('cors')
@@ -97,7 +101,8 @@ app.use(async (req, res, next) => {
         await conectar()
         next()
     } catch (error) {
-        next(error)
+        console.error('Error en middleware de conexión:', error.message)
+        res.status(500).json({ status: 500, message: 'Error al conectar a la base de datos', data: null })
     }
 })
 app.use(router)
