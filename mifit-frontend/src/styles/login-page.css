@@ -82,7 +82,7 @@ html, body {
   padding: 15px;
   border: none;
   border-radius: 10px;
-  background-color: #4facfe;
+  background-color: #a855f7;
   color: #ffffff;
   font-size: 16px;
   font-weight: bold;
@@ -91,7 +91,7 @@ html, body {
 }
 
 .submit-button:hover {
-  background-color: #3a9df8;
+  background-color: #9333ea;
   transform: translateY(-2px);
 }
 

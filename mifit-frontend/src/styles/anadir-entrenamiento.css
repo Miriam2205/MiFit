@@ -87,8 +87,8 @@
 .Boton {
     margin-top: 1rem;
     padding: 12px 24px;
-    background-color: transparent;
-    color: #a855f7;
+    background-color: #a855f7;
+    color: white;
     border: 2px solid #a855f7;
     border-radius: 12px;
     font-size: 15px;
